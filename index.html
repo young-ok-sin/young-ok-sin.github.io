@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>신영옥 | Backend Portfolio</title>
+    <meta
+      name="description"
+      content="예외 상황과 상태 전이를 설계하는 백엔드 개발자 신영옥의 포트폴리오"
+    >
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    >
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="site-header">
+        <div class="site-header-inner">
+          <a class="brand" href="#top">Young Ok Sin</a>
+          <nav class="site-nav" aria-label="주요 섹션">
+            <a href="#project">Project</a>
+            <a href="#problem-solving">Problem Solving</a>
+            <a href="#technical-notes">Notes</a>
+            <a href="#credentials">Credentials</a>
+          </nav>
+        </div>
+      </header>
+
+      <aside class="section-anchors" aria-label="페이지 바로가기">
+        <a class="anchor-link is-active" href="#opening" data-section-link="opening">
+          <span class="anchor-index">01</span>
+          <span class="anchor-text">Opening</span>
+        </a>
+        <a class="anchor-link" href="#project" data-section-link="project">
+          <span class="anchor-index">02</span>
+          <span class="anchor-text">Project</span>
+        </a>
+        <a class="anchor-link" href="#problem-solving" data-section-link="problem-solving">
+          <span class="anchor-index">03</span>
+          <span class="anchor-text">Problem</span>
+        </a>
+        <a class="anchor-link" href="#technical-notes" data-section-link="technical-notes">
+          <span class="anchor-index">04</span>
+          <span class="anchor-text">Notes</span>
+        </a>
+        <a class="anchor-link" href="#credentials" data-section-link="credentials">
+          <span class="anchor-index">05</span>
+          <span class="anchor-text">Credentials</span>
+        </a>
+      </aside>
+
+      <main id="top">
+        <section class="opening-statement section" id="opening" aria-labelledby="opening-title">
+          <div class="section-intro">
+            <p class="section-label">Backend Portfolio</p>
+            <span class="section-number">01</span>
+          </div>
+          <div class="opening-grid">
+            <div class="opening-copy">
+              <p class="kicker">Quiet systems, precise transitions.</p>
+              <h2 id="opening-title">상태 전이를 설계하는 백엔드 개발자</h2>
+              <p class="opening-lead">
+                기능 구현을 넘어 비동기 처리, 데이터 정합성, 상태 전이까지 고려해
+                안정적으로 동작하는 백엔드를 설계합니다.
+              </p>
+              <div class="opening-actions">
+                <a class="text-link" href="mailto:duddhrdl2727@naver.com">Email</a>
+                <a
+                  class="text-link"
+                  href="https://github.com/young-ok-sin"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  GitHub
+                </a>
+              </div>
+            </div>
+
+            <aside class="opening-note" aria-label="요약 메모">
+              <p class="note-label">Current Focus</p>
+              <p>
+                비동기 흐름과 운영 관점까지 고려해, 문제를 끝까지 추적할 수 있는
+                백엔드 설계를 증명하는 포트폴리오.
+              </p>
+              <ul class="inline-facts">
+                <li>Java</li>
+                <li>Spring Boot</li>
+                <li>PostgreSQL</li>
+                <li>AWS S3</li>
+                <li>FCM</li>
+              </ul>
+            </aside>
+          </div>
+        </section>
+
+        <section class="featured-project section" id="project" aria-labelledby="project-title">
+          <div class="section-intro">
+            <p class="section-label">Featured Project</p>
+            <span class="section-number">02</span>
+          </div>
+
+          <div class="section-heading">
+            <h2 id="project-title">MoA</h2>
+            <p class="section-lead">
+              소비 분석과 목표 기반 예산·저축 계획을 제공하는 개인 금융 서비스 백엔드
+            </p>
+          </div>
+
+          <div class="project-lede">
+            <p>
+              사회 초년생이 자신의 소비 습관을 분석하고, 목표 중심으로 예산과 저축
+              계획을 세울 수 있도록 돕는 서비스입니다. 저는 Plan 도메인 백엔드를 맡아
+              상태 전이, 우선순위 재정렬, 비동기 생성 흐름, 알림 연동까지 이어지는 핵심
+              사용자 경험을 구현했습니다.
+            </p>
+          </div>
+
+          <div class="project-layout">
+            <article class="project-primary">
+              <div class="case-block accent-teal">
+                <p class="block-label">Project Overview</p>
+                <dl class="meta-grid">
+                  <div>
+                    <dt>기간</dt>
+                    <dd>2026.02.20 - 2026.03.30</dd>
+                  </div>
+                  <div>
+                    <dt>형태</dt>
+                    <dd>7인 팀 프로젝트</dd>
+                  </div>
+                  <div>
+                    <dt>대상 사용자</dt>
+                    <dd>목표 중심으로 자산 계획을 세우고 싶은 사회 초년생</dd>
+                  </div>
+                  <div>
+                    <dt>역할</dt>
+                    <dd>Plan 도메인 백엔드 담당</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="case-block accent-ochre">
+                <p class="block-label">Ownership</p>
+                <ul class="editorial-list">
+                  <li>목표 우선순위와 상태 전이 로직 구현</li>
+                  <li>AI 이미지·영상 생성 비동기 파이프라인 구성</li>
+                  <li>Polling scheduler를 통한 생성 상태 추적 안정화</li>
+                  <li>S3 공통 저장 추상화 설계</li>
+                  <li>FCM 알림 연동으로 완료 시점 전달</li>
+                </ul>
+              </div>
+            </article>
+
+            <aside class="project-notes">
+              <div class="note-strip accent-plum">
+                <p class="note-label">Tech Decisions</p>
+                <ul class="note-list">
+                  <li><strong>Spring Boot 3</strong>로 API와 스케줄링, 비동기 처리를 한 흐름으로 구성</li>
+                  <li><strong>JPA</strong>로 Plan 중심 도메인 상태를 일관되게 관리</li>
+                  <li><strong>PostgreSQL</strong>로 금융성 데이터의 정합성과 트랜잭션 보장</li>
+                  <li><strong>AWS S3</strong>로 생성 결과물 저장을 서비스 로직과 분리</li>
+                  <li><strong>FCM</strong>으로 비동기 완료 시점을 사용자에게 즉시 전달</li>
+                </ul>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="problem-solving section" id="problem-solving" aria-labelledby="problem-title">
+          <div class="section-intro">
+            <p class="section-label">Problem Solving</p>
+            <span class="section-number">03</span>
+          </div>
+
+          <div class="section-heading narrative-heading">
+            <h2 id="problem-title">생성 상태를 끝까지 추적한 파이프라인 설계</h2>
+          </div>
+
+          <div class="narrative-flow">
+            <article class="narrative-step">
+              <span class="step-index">01</span>
+              <div>
+                <p class="block-label">Problem</p>
+                <p>
+                  영상 생성 서버가 <code>queued</code> 또는 <code>processing</code> 상태를
+                  반환하면, 백엔드가 이후 상태를 안정적으로 추적하지 못했습니다. 여러 목표가
+                  동시에 생성될 때 아직 진행 중인 작업도 실패처럼 보이는 문제가 있었습니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="narrative-step">
+              <span class="step-index">02</span>
+              <div>
+                <p class="block-label">Cause</p>
+                <p>
+                  생성 요청과 완료 처리가 하나의 흐름으로 강하게 묶여 있었고, 작업 상태를
+                  DB에 충분히 남기지 않았습니다. 그래서 즉시 완료되지 않는 작업은 후속
+                  추적의 기준점이 부족했습니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="narrative-step">
+              <span class="step-index">03</span>
+              <div>
+                <p class="block-label">Solution</p>
+                <p>
+                  생성 메타데이터를 Plan 엔티티에 저장하고 요청과 완료 처리를 분리했습니다.
+                  <code>queued</code>와 <code>processing</code> 상태는 실패로 처리하지 않고
+                  DB에 유지한 뒤, polling scheduler가 주기적으로 상태를 조회해
+                  <code>ready</code>, <code>error</code>, <code>cancelled</code>로 전이하도록
+                  설계했습니다.
+                </p>
+                <p>
+                  동시에 idempotency key와 상태 전이 메서드를 추가해 중복 요청과 경합
+                  상황에서도 같은 작업을 일관되게 추적할 수 있도록 했습니다.
+                </p>
+              </div>
+            </article>
+
+            <article class="narrative-step">
+              <span class="step-index">04</span>
+              <div>
+                <p class="block-label">Result</p>
+                <p>
+                  즉시 완료되지 않는 생성 작업을 더 이상 실패로 오인하지 않게 되었고,
+                  다중 목표 생성 상황에서도 처리 중 상태를 안정적으로 노출할 수 있게
+                  되었습니다. 이후 scheduler와 목록 조회 테스트를 추가하며 운영 리스크도
+                  함께 줄였습니다.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="technical-notes section" id="technical-notes" aria-labelledby="technical-title">
+          <div class="section-intro">
+            <p class="section-label">Technical Notes</p>
+            <span class="section-number">04</span>
+          </div>
+
+          <div class="section-heading">
+            <h2 id="technical-title">서비스 안정화 메모</h2>
+          </div>
+
+          <div class="notes-grid">
+            <article class="accent-teal">
+              <p class="block-label">Storage Abstraction</p>
+              <h3>공통 S3 저장 계층</h3>
+              <p>
+                member와 plan에서 반복되던 업로드, URL 생성, 삭제 흐름을 공통 계층으로
+                추상화해 저장소 관련 로직을 단순하게 유지했습니다.
+              </p>
+            </article>
+            <article class="accent-ochre">
+              <p class="block-label">Async Pipeline</p>
+              <h3>AI 이미지·영상 생성 파이프라인</h3>
+              <p>
+                목표 생성 이후 AI 이미지와 영상을 순차적으로 연결해, 결과물을 S3에
+                적재하고 완료 알림까지 이어지는 비동기 흐름을 설계했습니다.
+              </p>
+            </article>
+            <article class="accent-plum">
+              <p class="block-label">Operational Stability</p>
+              <h3>Polling 기반 상태 추적</h3>
+              <p>
+                외부 생성 서버의 응답 지연을 흡수하기 위해 polling scheduler와 상태 전이
+                로직을 분리해 운영 안정성을 높였습니다.
+              </p>
+            </article>
+            <article class="accent-teal">
+              <p class="block-label">Business Rule</p>
+              <h3>우선순위 재정렬</h3>
+              <p>
+                목표 완료 또는 취소 이후에도 남은 목표들의 우선순위가 자연스럽게
+                재정렬되도록 서비스 로직과 테스트를 함께 정리했습니다.
+              </p>
+            </article>
+            <article class="accent-ochre">
+              <p class="block-label">User Feedback</p>
+              <h3>FCM 완료 알림</h3>
+              <p>
+                비동기 생성이 끝나는 시점에 바로 결과를 확인할 수 있도록 FCM 알림을
+                연동해 사용자 경험을 보완했습니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="credentials section" id="credentials" aria-labelledby="credentials-title">
+          <div class="section-intro">
+            <p class="section-label">Credentials</p>
+            <span class="section-number">05</span>
+          </div>
+
+          <div class="section-heading">
+            <h2 id="credentials-title">학습과 경험</h2>
+          </div>
+
+          <div class="credentials-layout">
+            <article class="credential-column accent-teal">
+              <p class="block-label">Education</p>
+              <h3>SSAFY 14기 Java 전공 과정</h3>
+              <p class="support-copy">2025.07 - 2025.12 / 2026.01 - 현재</p>
+              <p>
+                Java와 Spring 기반 백엔드 개발, 데이터베이스 설계, 알고리즘 문제 해결,
+                프로젝트 중심 협업 경험을 바탕으로 백엔드 문제 해결 방식을 체계적으로
+                학습했습니다.
+              </p>
+            </article>
+
+            <article class="credential-column accent-ochre">
+              <p class="block-label">Certificates</p>
+              <ul class="compact-stack">
+                <li>정보처리기사</li>
+                <li>SQLD</li>
+                <li>ADsP</li>
+                <li>AZ-900</li>
+                <li>AI-900</li>
+              </ul>
+            </article>
+
+            <article class="credential-column accent-plum">
+              <p class="block-label">Awards</p>
+              <ul class="compact-stack">
+                <li>은상 | 한국정보기술학회 | 2024 한국정보기술학회 추계학술대회</li>
+                <li>최우수상 | 국립금오공과대학교 | 지역 발전 정책 아이디어 공모전</li>
+              </ul>
+            </article>
+
+            <article class="credential-column accent-teal">
+              <p class="block-label">Internship</p>
+              <h3>한국전력기술 현장실습</h3>
+              <p class="support-copy">2024.09 - 2025.01</p>
+              <p>
+                OCR과 Private RAG 프로젝트에서 이미지 데이터 전처리, OCR 인식, PDF
+                추출, Pandas 기반 데이터 가공을 수행하며 실무형 데이터 처리 경험을
+                쌓았습니다.
+              </p>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script>
+      (() => {
+        const sections = Array.from(document.querySelectorAll("main .section[id]"));
+        const links = Array.from(document.querySelectorAll("[data-section-link]"));
+
+        if (!sections.length || !links.length || !("IntersectionObserver" in window)) {
+          return;
+        }
+
+        const setActive = (id) => {
+          links.forEach((link) => {
+            link.classList.toggle("is-active", link.dataset.sectionLink === id);
+          });
+        };
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            const visible = entries
+              .filter((entry) => entry.isIntersecting)
+              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+            if (visible) {
+              setActive(visible.target.id);
+            }
+          },
+          {
+            rootMargin: "-18% 0px -54% 0px",
+            threshold: [0.2, 0.35, 0.55],
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+        setActive(sections[0].id);
+      })();
+    </script>
+  </body>
+</html>

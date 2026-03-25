@@ -1,0 +1,19 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+
+# Local experimentation and agent artifacts
+.superpowers/
+.tmp-anthropics-skills/
+
+# Generated planning/spec notes for local workflow
+docs/superpowers/
+
+# Local server/runtime noise
+*.log
+*.pid
+*.stdout
+*.stderr
+*.events
+*.server-info
+
