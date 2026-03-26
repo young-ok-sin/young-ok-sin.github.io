@@ -6,273 +6,323 @@
     <title>신영옥 | Backend Portfolio</title>
     <meta
       name="description"
-      content="예외 상황과 상태 전이를 설계하는 백엔드 개발자 신영옥의 포트폴리오"
+      content="상태 전이와 비동기 흐름을 설계하는 백엔드 개발자 신영옥의 포트폴리오"
     >
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Gowun+Batang:wght@400;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    >
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-    <div class="page-shell">
-      <header class="site-header">
-        <div class="site-header-inner">
-          <a class="brand" href="#opening">Young Ok Sin</a>
-          <nav class="site-nav" aria-label="주요 섹션">
-            <a href="#project">Project</a>
-            <a href="#credentials">Credentials</a>
-            <a href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer">GitHub</a>
-          </nav>
-        </div>
-      </header>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">shin yeong ok</a>
+        <nav class="site-nav" aria-label="주요 이동">
+          <a href="#projects">Projects</a>
+          <a href="#external-activity">External Activity</a>
+          <a href="#experience">Experience</a>
+          <a href="#credentials">Credentials</a>
+          <a href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </header>
 
-      <aside class="section-anchors" aria-label="페이지 바로가기">
-        <a class="anchor-link is-active" href="#opening" data-section-link="opening">
-          <span class="anchor-index">01</span>
-          <span class="anchor-text">Opening</span>
-        </a>
-        <a class="anchor-link" href="#project" data-section-link="project">
-          <span class="anchor-index">02</span>
-          <span class="anchor-text">Project</span>
-        </a>
-        <a class="anchor-link" href="#credentials" data-section-link="credentials">
-          <span class="anchor-index">03</span>
-          <span class="anchor-text">Credentials</span>
-        </a>
-      </aside>
-
-      <main>
-        <section class="section opening-statement is-current" id="opening" aria-labelledby="opening-title">
-          <div class="section-intro reveal-item">
-            <p class="section-label">Backend Portfolio</p>
-            <span class="section-number">01</span>
-          </div>
-
-          <div class="opening-grid">
-            <div class="opening-copy reveal-item">
-              <p class="kicker">Quiet systems, precise transitions.</p>
-              <h1 id="opening-title">상태 전이를 설계하는 백엔드 개발자</h1>
-              <p class="opening-lead">
-                기능 구현을 넘어 비동기 처리, 데이터 정합성, 상태 전이까지 고려해
-                안정적으로 동작하는 백엔드를 설계합니다.
-              </p>
-              <div class="opening-actions">
-                <a class="text-link" href="mailto:duddhrdl2727@naver.com">Email</a>
-                <a
-                  class="text-link"
-                  href="https://github.com/young-ok-sin"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  GitHub
-                </a>
-              </div>
-            </div>
-
-            <aside class="opening-note reveal-item" aria-label="요약 메모">
-              <p class="note-label">Current Focus</p>
-              <p>
-                비동기 흐름과 운영 관점까지 고려해, 문제를 끝까지 추적할 수 있는
-                백엔드 설계를 증명하는 포트폴리오입니다.
-              </p>
-              <ul class="inline-facts">
-                <li>Java</li>
-                <li>Spring Boot</li>
-                <li>PostgreSQL</li>
-                <li>AWS S3</li>
-                <li>FCM</li>
-              </ul>
-            </aside>
-          </div>
-        </section>
-
-        <section class="section featured-project" id="project" aria-labelledby="project-title">
-          <div class="section-intro reveal-item">
-            <p class="section-label">Selected Project</p>
-            <span class="section-number">02</span>
-          </div>
-
-          <div class="section-heading reveal-item">
-            <h2 id="project-title">MoA</h2>
-            <p class="section-lead">
-              소비 분석과 목표 기반 예산·저축 계획을 제공하는 개인 금융 서비스 백엔드 프로젝트
+    <main class="page-shell">
+      <aside class="profile-sidebar">
+        <section class="profile-card">
+          <img class="profile-photo" src="profile.jpg" alt="신영옥 프로필 사진">
+          <div class="profile-copy">
+            <h1>신영옥</h1>
+            <p class="profile-handle">shin yeong ok</p>
+            <p class="profile-contact">duddhrdl2727@naver.com</p>
+            <p class="profile-role">Backend Developer</p>
+            <p class="profile-summary">
+              비동기 처리, 데이터 정합성, 상태 전이를 고려해 운영 가능한 백엔드를 설계합니다.
             </p>
           </div>
+          <div class="profile-actions">
+            <a class="button button-primary" href="mailto:duddhrdl2727@naver.com">Email</a>
+            <a class="button" href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer">GitHub</a>
+          </div>
+          <dl class="profile-meta">
+            <div>
+              <dt>Main Focus</dt>
+              <dd>Java / Spring Boot / MySQL</dd>
+            </div>
+            <div>
+              <dt>Stack</dt>
+              <dd>Java / Spring Boot / Django / PostgreSQL / MySQL / AWS</dd>
+            </div>
+          </dl>
+        </section>
+      </aside>
 
-          <div class="project-card-layout">
-            <a class="project-card reveal-item" href="moa.html">
-              <div class="project-card-main">
-                <div class="project-card-top">
-                  <p class="card-label">Case Study</p>
-                  <span class="card-arrow" aria-hidden="true">↗</span>
-                </div>
-                <div class="project-card-copy">
-                  <h3>MoA 프로젝트 상세 보기</h3>
-                  <p>
-                    Plan 도메인 백엔드를 맡아 상태 전이, 우선순위 재정렬,
-                    비동기 생성 흐름, 알림 연동까지 연결되는 핵심 흐름을 구현했습니다.
-                  </p>
-                </div>
-                <ul class="project-tags">
-                  <li>State Transition</li>
-                  <li>Polling Scheduler</li>
-                  <li>FCM</li>
-                  <li>S3</li>
-                </ul>
-              </div>
+      <div class="content-column">
+        <section class="hero-panel">
+          <p class="eyebrow">Backend Portfolio</p>
+          <h2>복잡한 흐름도 끝까지 추적 가능한 백엔드를 설계합니다.</h2>
+          <ul class="topic-list" aria-label="기술 스택">
+            <li>Java</li>
+            <li>Spring Boot</li>
+            <li>Django</li>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>AWS</li>
+          </ul>
+          <p class="hero-copy">
+            프로젝트에서는 상태 전이와 비동기 흐름을 중심으로 문제를 구조화했고, 활동과 실무 경험에서는
+            팀 운영과 외부 연동, 데이터 처리 경험을 쌓아왔습니다.
+          </p>
+        </section>
 
-              <div class="project-card-side">
-                <dl class="project-meta">
-                  <div>
-                    <dt>기간</dt>
-                    <dd>2026.02.20 - 2026.03.30</dd>
-                  </div>
-                  <div>
-                    <dt>형태</dt>
-                    <dd>7인 팀 프로젝트</dd>
-                  </div>
-                  <div>
-                    <dt>역할</dt>
-                    <dd>Plan 도메인 백엔드 담당</dd>
-                  </div>
-                </dl>
-                <span class="project-cta">Case Study 보기</span>
+        <section class="repo-section" id="projects">
+          <div class="section-title">
+            <h3>Selected Projects</h3>
+            <span>프로젝트 상세는 각 페이지에서 확인할 수 있습니다.</span>
+          </div>
+
+          <div class="project-grid">
+            <a class="repo-card project-card project-card-link" href="moa.html" aria-label="MoA 상세 페이지로 이동">
+              <div class="repo-card-head">
+                <div>
+                  <h4>MoA</h4>
+                </div>
+                <span class="card-jump" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M6 3.5H3.5V12.5H12.5V10" />
+                    <path d="M8.5 3.5H12.5V7.5" />
+                    <path d="M12.5 3.5L7 9" />
+                  </svg>
+                </span>
               </div>
+              <p class="repo-description">
+                소비 분석과 목표 기반 예산·저축 계획을 제공하는 개인 금융 서비스 백엔드 프로젝트입니다.
+              </p>
+              <p class="entry-meta">2026.02.20 - 2026.03.30 · 7인 팀 프로젝트 · Plan 도메인 백엔드 / S3</p>
+              <ul class="detail-list">
+                <li>상태 전이와 우선순위 재정렬 로직 구현</li>
+                <li>비동기 콘텐츠 생성 흐름과 polling 기반 추적 설계</li>
+                <li>FCM 알림과 공통 저장소 추상화 적용</li>
+              </ul>
+              <ul class="topic-list">
+                <li>state-transition</li>
+                <li>polling</li>
+                <li>fcm</li>
+                <li>s3</li>
+              </ul>
+            </a>
+
+            <a class="repo-card project-card project-card-link" href="healthcare-ai.html" aria-label="의료 데이터 인증 AI 앱 상세 페이지로 이동">
+              <div class="repo-card-head">
+                <div>
+                  <h4>블록체인 기반 의료 데이터 인증 및 AI 의료 앱</h4>
+                </div>
+                <span class="card-jump" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M6 3.5H3.5V12.5H12.5V10" />
+                    <path d="M8.5 3.5H12.5V7.5" />
+                    <path d="M12.5 3.5L7 9" />
+                  </svg>
+                </span>
+              </div>
+              <p class="repo-description">
+                블록체인 기반 의료 데이터 인증과 AI를 활용한 노약자 맞춤형 의료 애플리케이션 개발 프로젝트입니다.
+              </p>
+              <p class="entry-meta">2024.01 - 2024.06 · 4인 팀 프로젝트 · 팀장 및 백엔드 개발</p>
+              <ul class="detail-list">
+                <li>회원 관리와 외부 의료 API 통신 코드 개발</li>
+                <li>의료 데이터 해시 변환 후 블록체인 전송 로직 구현</li>
+                <li>원격 서버 운영과 의료 데이터 송수신 기능 담당</li>
+              </ul>
+              <ul class="topic-list">
+                <li>Spring Boot</li>
+                <li>MySQL</li>
+                <li>Blockchain</li>
+                <li>Healthcare</li>
+              </ul>
+            </a>
+
+            <a class="repo-card project-card project-card-link" href="sebook.html" aria-label="SEBook 상세 페이지로 이동">
+              <div class="repo-card-head">
+                <div>
+                  <h4>SEBook</h4>
+                </div>
+                <span class="card-jump" aria-hidden="true">
+                  <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M6 3.5H3.5V12.5H12.5V10" />
+                    <path d="M8.5 3.5H12.5V7.5" />
+                    <path d="M12.5 3.5L7 9" />
+                  </svg>
+                </span>
+              </div>
+              <p class="repo-description">
+                독서 활동을 독려하고 사용자 맞춤 도서 추천과 독자 간 소통 기능을 제공하는 시스템입니다.
+              </p>
+              <p class="entry-meta">2023.09 - 2023.12 · 3인 팀 프로젝트 · 프로젝트 팀장 / 백엔드 총괄</p>
+              <ul class="detail-list">
+                <li>게시판과 사용자 간 소통 기능 구현</li>
+                <li>벡터화, 코사인 유사도, 지식 그래프 기반 추천 기능 설계</li>
+                <li>데이터 수집과 DB 재설계 과정에서 트러블슈팅 경험 축적</li>
+              </ul>
+              <ul class="topic-list">
+                <li>Django</li>
+                <li>MySQL</li>
+                <li>Recommendation</li>
+                <li>Community</li>
+              </ul>
             </a>
           </div>
         </section>
 
-        <section class="section credentials" id="credentials" aria-labelledby="credentials-title">
-          <div class="section-intro reveal-item">
-            <p class="section-label">Credentials</p>
-            <span class="section-number">03</span>
+        <section class="repo-section" id="external-activity">
+          <div class="section-title">
+            <h3>External Activity</h3>
+            <span>대외활동과 멘토링 경험</span>
           </div>
 
-          <div class="section-heading reveal-item">
-            <h2 id="credentials-title">학습과 경험</h2>
-          </div>
-
-          <div class="credentials-layout">
-            <article class="credential-column accent-teal reveal-item">
-              <p class="block-label">Education</p>
-              <h3>SSAFY 14기 Java 전공 과정</h3>
-              <p class="support-copy">2025.07 - 2025.12 / 2026.01 - 현재</p>
-              <p>
-                Java와 Spring 기반 백엔드 개발, 데이터베이스 설계, 알고리즘 문제 해결,
-                프로젝트 중심 협업 경험을 바탕으로 백엔드 문제 해결 방식을 체계적으로
-                학습했습니다.
+          <div class="project-grid">
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>Pro Bono ICT Mentoring</h4>
+                <span>2024.04 - 2024.10</span>
+              </div>
+              <p class="card-copy">
+                주관 기관: 과학기술정보통신부
               </p>
-            </article>
-
-            <article class="credential-column accent-ochre reveal-item">
-              <p class="block-label">Certificates</p>
-              <ul class="compact-stack">
-                <li>정보처리기사</li>
-                <li>SQLD</li>
-                <li>ADsP</li>
-                <li>AZ-900</li>
-                <li>AI-900</li>
+              <p class="panel-strong">팀장 및 백엔드 개발 담당</p>
+              <ul class="detail-list">
+                <li>블록체인 기반 의료 데이터 인증 및 AI 활용 의료 애플리케이션 개발 참여</li>
+                <li>의료 데이터 송수신, 건강 편의 기능, 의료 질의응답 커뮤니티 기능 기획</li>
+                <li>회원 관리, 외부 의료 API 통신, 블록체인 전송 로직과 원격 서버 운영 담당</li>
               </ul>
             </article>
 
-            <article class="credential-column accent-plum reveal-item">
-              <p class="block-label">Awards</p>
-              <ul class="compact-stack">
-                <li>은상 | 한국정보기술학회 | 2024 한국정보기술학회 추계학술대회</li>
-                <li>최우수상 | 국립금오공과대학교 | 지역 발전 정책 아이디어 공모전</li>
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>디지털 새싹 캠프 멘토링</h4>
+                <span>2023.08</span>
+              </div>
+              <p class="card-copy">
+                주관 기관: 소프트웨어야 놀자
+              </p>
+              <p class="panel-strong">팀장 및 운영 총괄</p>
+              <ul class="detail-list">
+                <li>인공지능 수업 연계 대외활동에서 교육 워크숍 운영과 실습 총괄 담당</li>
+                <li>교육·실습 일정 기획과 담당 교사 커뮤니케이션 주도</li>
+                <li>팀 구성, 역할 분배, 학생 참여 유도, 현장 멘토링까지 총괄</li>
               </ul>
             </article>
 
-            <article class="credential-column accent-teal reveal-item">
-              <p class="block-label">Internship</p>
-              <h3>한국전력기술 현장실습</h3>
-              <p class="support-copy">2024.09 - 2025.01</p>
-              <p>
-                OCR과 Private RAG 프로젝트에서 이미지 데이터 전처리, OCR 인식, PDF
-                추출, Pandas 기반 데이터 가공을 수행하며 실무형 데이터 처리 경험을
-                쌓았습니다.
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>멋쟁이사자처럼 동아리 활동</h4>
+                <span>2023.03 - 2023.09</span>
+              </div>
+              <p class="card-copy">
+                주관 기관: 멋쟁이사자처럼
               </p>
+              <p class="panel-strong">웹 개발 학습 및 협업 경험</p>
+              <ul class="detail-list">
+                <li>Django 기반 웹 개발 커리큘럼을 수강하며 URL, View, Model, ORM, CRUD를 학습</li>
+                <li>소규모 프로젝트 구성과 Git 기반 협업 프로세스를 경험</li>
+                <li>교내·전국 해커톤에 참가하며 제한 시간 내 우선순위 판단과 설계 경험 축적</li>
+              </ul>
             </article>
           </div>
         </section>
-      </main>
-    </div>
 
-    <script>
-      (() => {
-        const sections = Array.from(document.querySelectorAll("main .section[id]"));
-        const links = Array.from(document.querySelectorAll("[data-section-link]"));
-        const revealTargets = Array.from(document.querySelectorAll(".reveal-item"));
+        <section class="repo-section" id="experience">
+          <div class="section-title">
+            <h3>Experience</h3>
+            <span>인턴십과 근로 경험</span>
+          </div>
 
-        const setActive = (id) => {
-          links.forEach((link) => {
-            link.classList.toggle("is-active", link.dataset.sectionLink === id);
-          });
-          sections.forEach((section) => {
-            section.classList.toggle("is-current", section.id === id);
-          });
-        };
+          <div class="project-grid project-grid-wide">
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>한국전력기술</h4>
+                <span>2024.09 - 2025.01</span>
+              </div>
+              <p class="panel-strong">스마트융합연구소 스마트기술팀 현장실습생</p>
+              <ul class="detail-list">
+                <li>OCR 프로젝트에서 이미지 라벨링, 작업 과정 문서화, 하이퍼파라미터 튜닝과 성능 비교 수행</li>
+                <li>인공지능 모델 하이퍼파라미터 튜닝 작업 참여</li>
+                <li>Private RAG 프로젝트에서 PDF 문서 CSV 변환 코드 개발</li>
+                <li>Pandas를 활용한 데이터 가공 업무 진행</li>
+              </ul>
+            </article>
 
-        if (!("IntersectionObserver" in window)) {
-          revealTargets.forEach((target) => target.classList.add("is-visible"));
-          return;
-        }
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>국립금오공과대학교 정보전산원</h4>
+                <span>2023.06 - 2023.08</span>
+              </div>
+              <p class="panel-strong">근로장학생</p>
+              <ul class="detail-list">
+                <li>2023년과 2024년 6월부터 8월까지 총 약 5개월 근로</li>
+                <li>Putty를 사용한 웹 호스팅 업무 지원</li>
+                <li>교내 시스템 베타 테스트와 각종 사무 보조 업무 수행</li>
+              </ul>
+            </article>
+          </div>
+        </section>
 
-        const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+        <section class="repo-section" id="credentials">
+          <div class="section-title">
+            <h3>Credentials</h3>
+            <span>Education · Awards · Certificates</span>
+          </div>
 
-        revealTargets.forEach((target, index) => {
-          target.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 80}ms`);
-        });
+          <div class="credentials-grid">
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>Education</h4>
+                <span>2025.07 - 현재</span>
+              </div>
+              <p class="panel-strong">SSAFY 14기 Java 전공 과정</p>
+              <p class="card-copy">
+                Java와 Spring 기반 백엔드 개발, 데이터베이스 설계, 알고리즘 문제 해결, 프로젝트 협업 경험을
+                중심으로 백엔드 문제 해결 방식을 체계적으로 학습하고 있습니다.
+              </p>
+            </article>
 
-        if (prefersReducedMotion) {
-          revealTargets.forEach((target) => target.classList.add("is-visible"));
-        } else {
-          const revealObserver = new IntersectionObserver(
-            (entries, observer) => {
-              entries.forEach((entry) => {
-                if (!entry.isIntersecting) {
-                  return;
-                }
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>Awards</h4>
+                <span>2</span>
+              </div>
+              <ul class="detail-list">
+                <li>2024 한국정보기술학회 하계 종합학술대회 우수논문상 동상 · 한국정보기술학회 · 2024.05</li>
+                <li>대학 발전을 위한 정책 아이디어 공모전 최우수상 · 국립금오공과대학교 · 2023.11</li>
+              </ul>
+            </article>
 
-                entry.target.classList.add("is-visible");
-                observer.unobserve(entry.target);
-              });
-            },
-            {
-              rootMargin: "0px 0px -10% 0px",
-              threshold: 0.15,
-            }
-          );
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>Certificates</h4>
+                <span>4</span>
+              </div>
+              <ul class="detail-list">
+                <li>ADsP · 2025.09</li>
+                <li>SQLD · 2025.04</li>
+                <li>AZ-900: Microsoft Azure Fundamentals · 2023.01</li>
+                <li>AI-900: Microsoft Azure AI Fundamentals · 2023.01</li>
+              </ul>
+            </article>
 
-          revealTargets.forEach((target) => revealObserver.observe(target));
-        }
-
-        if (!sections.length || !links.length) {
-          return;
-        }
-
-        const sectionObserver = new IntersectionObserver(
-          (entries) => {
-            const visible = entries
-              .filter((entry) => entry.isIntersecting)
-              .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
-
-            if (visible) {
-              setActive(visible.target.id);
-            }
-          },
-          {
-            rootMargin: "-16% 0px -52% 0px",
-            threshold: [0.2, 0.4, 0.6],
-          }
-        );
-
-        sections.forEach((section) => sectionObserver.observe(section));
-        setActive(sections[0].id);
-      })();
-    </script>
+            <article class="panel-card">
+              <div class="card-header">
+                <h4>Quick Highlights</h4>
+                <span>Resume Snapshot</span>
+              </div>
+              <ul class="detail-list">
+                <li>프로젝트 팀장 경험 3회 이상</li>
+                <li>백엔드 중심 팀 프로젝트 다수 수행</li>
+                <li>교육 운영, 멘토링, 실습 총괄 경험 보유</li>
+                <li>의료, 추천, 금융 도메인 프로젝트 경험</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+      </div>
+    </main>
   </body>
 </html>

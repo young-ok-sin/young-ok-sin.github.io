@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SEBook | Case Study</title>
+    <meta
+      name="description"
+      content="SEBook 프로젝트 상세 페이지"
+    >
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="moa.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">shin yeong ok / SEBook</a>
+        <nav class="site-nav" aria-label="프로젝트 상세 이동">
+          <a href="#readme">README</a>
+          <a href="#features">Features</a>
+          <a href="#troubleshooting">Troubleshooting</a>
+          <a href="index.html">Back</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <aside class="project-sidebar">
+        <section class="side-card">
+          <p class="side-label">Repository</p>
+          <h1>SEBook</h1>
+          <p class="side-path">SEBook_backend</p>
+          <p class="side-summary">
+            독서 활동을 독려하고 사용자 맞춤 도서 추천과 독자 간 소통 기능을 제공하는 시스템입니다.
+          </p>
+          <span class="pill">Team 3</span>
+          <dl class="side-meta">
+            <div>
+              <dt>기간</dt>
+              <dd>2023.09 - 2023.12</dd>
+            </div>
+            <div>
+              <dt>역할</dt>
+              <dd>프로젝트 팀장 / 백엔드 총괄</dd>
+            </div>
+            <div>
+              <dt>기술 환경</dt>
+              <dd>Django / MySQL / GitHub</dd>
+            </div>
+          </dl>
+          <ul class="topic-list">
+            <li>django</li>
+            <li>recommendation</li>
+            <li>community</li>
+            <li>mysql</li>
+          </ul>
+        </section>
+      </aside>
+
+      <div class="content-column">
+        <section class="readme-panel" id="readme">
+          <p class="eyebrow">README</p>
+          <h2>독서 데이터와 사용자 상호작용을 연결한 추천 시스템 프로젝트</h2>
+          <p class="hero-copy">
+            침체된 독서 활동을 독려하기 위해 사용자 맞춤 도서 추천과 독자 간 소통 기능을 함께 제공하는 서비스를 개발했습니다.
+            팀장과 백엔드 총괄 역할을 맡아 커뮤니티 기능과 추천 로직의 중심 구조를 설계했습니다.
+          </p>
+        </section>
+
+        <section class="content-section" id="features">
+          <div class="section-title">
+            <h3>Features</h3>
+            <span>What I built</span>
+          </div>
+          <div class="grid two">
+            <article class="panel-card">
+              <h4>Community</h4>
+              <ul class="bullet-list">
+                <li>도서 관련 인상 깊은 구절과 독후감을 공유하는 게시판 기능 구현</li>
+                <li>사용자 간 소통을 통해 도서 흥미를 유도하는 구조 설계</li>
+              </ul>
+            </article>
+            <article class="panel-card">
+              <h4>Recommendation</h4>
+              <ul class="bullet-list">
+                <li>최근 저장 도서 기반 동일 카테고리 도서 추천</li>
+                <li>도서 제목, 작가, 설명을 벡터화한 뒤 코사인 유사도 계산</li>
+                <li>유사도와 저장 수를 가중치로 반영한 지식 그래프 생성</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section" id="troubleshooting">
+          <div class="section-title">
+            <h3>Troubleshooting</h3>
+            <span>What I learned</span>
+          </div>
+          <div class="timeline">
+            <article class="panel-card">
+              <p class="step-label">01 Data Collection Delay</p>
+              <p>
+                OpenAPI 사용 경험 부족으로 데이터 수집이 지연됐고, 이후에는 설계 단계에서 충분한 데이터 확보 계획이 먼저 필요하다는 점을 배웠습니다.
+              </p>
+            </article>
+            <article class="panel-card">
+              <p class="step-label">02 DB Redesign</p>
+              <p>
+                지식 그래프 설계 초기에 좋아요 기능을 고려하지 않아 DB를 다시 설계했고, 기능 설계 단계에서 전체 로직을 함께 보는 습관의 중요성을 배웠습니다.
+              </p>
+            </article>
+            <article class="panel-card">
+              <p class="step-label">03 Outcome</p>
+              <p>
+                창의융합종합설계 교과목에서 A+를 받았고, 관련 논문은 2024 한국정보기술학회 하계 종합학술대회 우수논문상 동상으로 이어졌습니다.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">
+            <h3>Link</h3>
+            <span>Repository</span>
+          </div>
+          <article class="panel-card">
+            <h4>GitHub</h4>
+            <p>
+              <a href="https://github.com/young-ok-sin/SEBook_backend" target="_blank" rel="noreferrer">
+                github.com/young-ok-sin/SEBook_backend
+              </a>
+            </p>
+          </article>
+        </section>
+      </div>
+    </main>
+  </body>
+</html>

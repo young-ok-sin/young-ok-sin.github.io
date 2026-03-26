@@ -33,11 +33,21 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p .pages-dist
+          cp index.html .pages-dist/
+          cp style.css .pages-dist/
+          cp moa.html .pages-dist/
+          cp moa.css .pages-dist/
+          cp healthcare-ai.html .pages-dist/
+          cp sebook.html .pages-dist/
+          cp profile.jpg .pages-dist/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
-          path: '.'
+          # Upload only published files
+          path: '.pages-dist'
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
