@@ -6,7 +6,7 @@
     <title>KEPCO | Case Study</title>
     <meta
       name="description"
-      content="한국전력기술 현장실습에서 수행한 라벨링 분석과 PDF 변환 경험을 정리한 포트폴리오 상세 페이지"
+      content="한국전력기술 현장실습에서 수행한 문서 OCR 분석과 도메인 특화 검색 시스템 개발 경험을 정리한 포트폴리오 상세 페이지"
     >
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="moa.css">
@@ -16,7 +16,7 @@
       <div class="header-inner">
         <a class="brand" href="index.html">shin yeong ok / KEPCO</a>
         <nav class="site-nav" aria-label="프로젝트 상세 이동">
-          <a href="#readme">README</a>
+          <a href="#overview">Overview</a>
           <a href="#links">Links</a>
           <a href="index.html">Back</a>
         </nav>
@@ -30,7 +30,8 @@
           <h1>한국전력기술</h1>
           <p class="side-path">신영옥 / Smart Technology Team</p>
           <p class="side-summary">
-            현장실습에서 OCR 라벨링 분석, 작업 문서화, 그리고 Private RAG용 PDF 변환 코드를 다뤘습니다.
+            현장실습에서 OCR 라벨링 분석, 전처리 개선, PDF 문장화 파이프라인 정리까지 수행한 경험을
+            하나의 사례로 묶어 정리했습니다.
           </p>
           <span class="pill">Internship</span>
           <dl class="side-meta">
@@ -44,7 +45,7 @@
             </div>
             <div>
               <dt>핵심 업무</dt>
-              <dd>라벨링 분석 / PDF 변환 / 데이터 가공</dd>
+              <dd>문서 OCR / 검색형 문장 데이터 / 데이터 가공</dd>
             </div>
           </dl>
           <ul class="topic-list">
@@ -57,49 +58,168 @@
       </aside>
 
       <div class="content-column">
-        <section class="readme-panel" id="readme">
+        <section class="readme-panel" id="overview">
           <p class="eyebrow">README</p>
           <h2>Paper PDF Extractor</h2>
           <p class="hero-copy">
             영어 PDF 원문을 RAG에 적합한 검색형 문장 데이터로 변환하는 전처리 파이프라인입니다.
-            한국전력기술 현장실습에서 문서 분석과 변환 흐름을 정리하며 만든 작업을 상세 페이지로 기록했습니다.
+            단순 추출이 아니라 줄바꿈 복구, 노이즈 제거, 문장 단위 분리, 저품질 문서 필터링을 함께 수행해
+            검색과 임베딩에 더 적합한 입력을 만듭니다.
           </p>
         </section>
 
         <section class="content-section">
           <div class="section-title">
-            <h3>Summary</h3>
-            <span>Project context</span>
+            <h3>참여 프로젝트</h3>
+            <span>한국전력기술 현장실습에서 수행한 작업</span>
           </div>
           <div class="grid two">
             <article class="panel-card">
-              <h4>What I did</h4>
+              <h4>현장실습 개요</h4>
               <p>
-                PDF 문서의 라벨링 결과를 살펴보고, 후속 RAG 처리에 맞게 문장을 추출·정리하는 흐름을
-                검토했습니다. 데이터 가공 단계에서는 Pandas를 활용해 변환 로직을 정리했습니다.
+                스마트융합연구소 스마트기술팀에서 문서 처리와 검색형 데이터 구조화 작업을 중심으로 실무를
+                경험했습니다. OCR 분석 결과를 정리하고, 후속 검색 시스템에 넣을 수 있는 형태로 문서를 가공하는
+                것이 주된 역할이었습니다.
               </p>
             </article>
             <article class="panel-card">
-              <h4>Why it matters</h4>
+              <h4>기여 범위</h4>
+              <ul class="detail-list">
+                <li>문서 라벨링 결과를 검토하고 문제 구간을 분류</li>
+                <li>OCR 결과를 바탕으로 전처리와 추출 기준을 조정</li>
+                <li>Private RAG용 PDF 변환 흐름을 정리하고 CSV 저장 구조를 검토</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">
+            <h3>문서 OCR 관련 프로젝트</h3>
+            <span>라벨링과 OCR 품질 개선 경험</span>
+          </div>
+          <div class="grid two">
+            <article class="panel-card">
+              <h4>OCR 개선 포인트</h4>
+              <ul class="detail-list">
+                <li>문서 라벨링</li>
+                <li>라벨링 결과를 바탕으로 하이퍼파라미터 튜닝</li>
+                <li>OCR 라이브러리 비교</li>
+                <li>표선 제거 전처리 개선</li>
+                <li>OCR 하이퍼파라미터 튜닝으로 성능 개선</li>
+              </ul>
+            </article>
+            <article class="panel-card">
+              <h4>실무 메모</h4>
               <p>
-                단순 파일 변환이 아니라, 검색과 재사용이 가능한 형태로 문서를 구조화하는 데 초점을 둔 작업입니다.
-                동일한 문서라도 후속 파이프라인에서 쓰기 좋은 형태로 바꾸는 것이 핵심이었습니다.
+                라벨링 결과를 기준으로 어떤 OCR 라이브러리가 문서 유형에 더 잘 맞는지 비교했고, 표선이
+                텍스트 인식에 주는 영향을 줄이기 위해 전처리 단계를 보강했습니다. 이후에는 OCR
+                하이퍼파라미터를 조정해 인식 성능이 개선되는 지점을 확인했습니다.
               </p>
+            </article>
+          </div>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">
+            <h3>도메인 특화 검색 시스템 개발</h3>
+            <span>Paper PDF Extractor 전처리 파이프라인</span>
+          </div>
+          <article class="panel-card">
+            <p class="panel-strong">영어 PDF 원문을 RAG에 적합한 검색형 문장 데이터로 변환하는 전처리 파이프라인</p>
+            <p>
+              <code>paper_extractor.py</code>는 PDF 문서를 RAG(Retrieval-Augmented Generation)의 기초 데이터로
+              사용할 수 있도록 정제하고 구조화하는 전처리 스크립트입니다. 단순 텍스트 추출에 그치지 않고,
+              줄바꿈으로 깨진 단어 복구, 불필요한 기호 제거, 문장 단위 분리, 저품질 문서 필터링까지 수행해
+              검색과 임베딩에 더 적합한 형태의 문장 데이터를 생성합니다.
+            </p>
+
+            <div class="grid two">
+              <section>
+                <h4>현재 파일 구조</h4>
+                <ul class="detail-list">
+                  <li><code>paper_extractor.py</code>: 현재 실제로 사용하는 메인 PDF 추출 스크립트</li>
+                  <li><code>temp/book_extractor_unused.py</code>: 사용하지 않는 임시 보관용 파일</li>
+                </ul>
+              </section>
+              <section>
+                <h4>왜 필요한가</h4>
+                <p>
+                  RAG 시스템의 성능은 검색 모델이나 LLM 이전에 입력 문서 품질에 크게 영향을 받습니다.
+                  특히 PDF 원문은 줄바꿈으로 분리된 단어, 표와 수식의 혼재, OCR 결과의 노이즈, 깨진 문장
+                  경계 같은 문제를 자주 포함합니다. 이 프로젝트는 문서를 정제하고 문장 단위로 저장해
+                  후속 검색 단계에 바로 쓸 수 있도록 만드는 데 초점을 맞췄습니다.
+                </p>
+              </section>
+            </div>
+
+            <section>
+              <h4>RAG 전처리 흐름</h4>
+              <ul class="detail-list">
+                <li>PDF 수집 및 배치 처리: 폴더 내 PDF를 순차적으로 처리하고 결과 CSV와 제외 문서 CSV를 생성</li>
+                <li>PDF 로딩과 예외 처리: 손상 문서는 개별적으로 기록하고 전체 배치는 계속 진행</li>
+                <li>텍스트 추출: 페이지 텍스트를 안전하게 가져온 뒤 전처리를 바로 적용</li>
+                <li>노이즈 제거와 텍스트 복구: 줄바꿈 복구, 하이픈 처리, 반복 기호와 빈 괄호 제거</li>
+                <li>검색 단위 생성: 문장 단위로 저장해 검색과 임베딩에 맞는 입력으로 변환</li>
+                <li>저품질 문서 필터링: 특수문자 비율, 영문 비율, 빈 문서 여부를 기준으로 제외</li>
+                <li>길이 필터링 후 저장: 원문과 정제 문장의 길이를 모두 확인한 뒤 최종 CSV에 기록</li>
+              </ul>
+              <p>
+                이 과정에서 핵심은 외부 PDF 파일을 페이지 단위 텍스트가 아니라 문장 단위로 저장하는 것입니다.
+                그래서 검색 인덱스, 청크 병합, 벡터 DB 적재 같은 후속 단계로 바로 연결할 수 있습니다.
+              </p>
+            </section>
+
+            <section>
+              <h4>Paper PDF Extractor</h4>
+              <blockquote class="hero-copy">
+                영어 PDF 원문을 RAG에 적합한 검색형 문장 데이터로 변환하는 전처리 파이프라인
+              </blockquote>
+              <p>
+                이 스크립트는 PDF 추출 도구가 아니라, 검색 가능한 문장 데이터셋을 만드는 데이터 준비
+                파이프라인입니다. 라벨링 결과와 OCR 품질 개선 경험을 바탕으로, 실제로 검색에 쓰기 좋은 입력
+                품질이 무엇인지까지 고려해 설계했습니다.
+              </p>
+            </section>
+          </article>
+        </section>
+
+        <section class="content-section">
+          <div class="section-title">
+            <h3>기타 업무</h3>
+            <span>현장실습 중 수행한 보조 작업</span>
+          </div>
+          <div class="grid two">
+            <article class="panel-card">
+              <h4>PDF 변환 및 데이터 가공</h4>
+              <ul class="detail-list">
+                <li>Private RAG 프로젝트에서 PDF 문서를 CSV로 변환하는 코드 개발</li>
+                <li>Pandas를 활용한 데이터 가공 업무 진행</li>
+                <li>문서 정제 결과를 후속 작업에서 재사용 가능한 형태로 정리</li>
+              </ul>
+            </article>
+            <article class="panel-card">
+              <h4>실무 지원</h4>
+              <ul class="detail-list">
+                <li>작업 문서화와 분석 결과 기록 정리</li>
+                <li>실습 과정에서 발생한 예외와 처리 결과를 개별 문서 단위로 관리</li>
+                <li>검색형 문장 데이터 구조를 이해하기 위한 전처리 검토</li>
+              </ul>
             </article>
           </div>
         </section>
 
         <section class="content-section" id="links">
           <div class="section-title">
-            <h3>Links</h3>
-            <span>PDF and repository</span>
+            <h3>자료 링크</h3>
+            <span>원본 자료와 코드 저장소</span>
           </div>
           <div class="grid two">
             <article class="panel-card">
-              <h4>Labeling Analysis PDF</h4>
+              <h4>라벨링 결과 분석 PDF</h4>
               <p>
                 <a href="assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer">
-                  assets/docs/kepco-labeling-analysis.pdf
+                  라벨링 결과 분석 PDF 바로 열기
                 </a>
               </p>
             </article>
