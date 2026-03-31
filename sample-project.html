@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sample Project | README Detail</title>
+    <meta
+      name="description"
+      content="GitHub README가 렌더된 것처럼 보이는 샘플 프로젝트 상세 페이지"
+    >
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="moa.css">
+    <style>
+      .page-shell {
+        grid-template-columns: minmax(220px, 280px) minmax(0, 860px);
+        justify-content: center;
+      }
+
+      .doc-sidebar .side-card {
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: none;
+      }
+
+      .doc-sidebar .side-summary {
+        font-size: 0.94rem;
+      }
+
+      .doc-meta-list {
+        display: grid;
+        gap: 0.75rem;
+        margin-top: 1rem;
+      }
+
+      .doc-meta-list strong {
+        display: block;
+        color: var(--heading);
+        font-size: 0.84rem;
+        margin-bottom: 0.18rem;
+      }
+
+      .markdown-document {
+        padding: 2rem;
+        border: 1px solid #d0d7de;
+        border-radius: 18px;
+        background: #ffffff;
+        box-shadow: 0 20px 48px rgba(31, 35, 40, 0.08);
+      }
+
+      .markdown-document > * {
+        max-width: 100%;
+      }
+
+      .markdown-document h1,
+      .markdown-document h2,
+      .markdown-document h3,
+      .markdown-document p,
+      .markdown-document ul,
+      .markdown-document ol,
+      .markdown-document blockquote,
+      .markdown-document table,
+      .markdown-document pre {
+        margin: 0;
+      }
+
+      .markdown-document h1 {
+        font-size: clamp(2rem, 4vw, 2.7rem);
+        line-height: 1.12;
+        letter-spacing: -0.03em;
+      }
+
+      .markdown-document h2 {
+        margin-top: 2rem;
+        padding-bottom: 0.55rem;
+        border-bottom: 1px solid #d8dee4;
+        font-size: 1.45rem;
+        line-height: 1.25;
+      }
+
+      .markdown-document h3 {
+        margin-top: 1.1rem;
+        font-size: 1.02rem;
+      }
+
+      .markdown-document p,
+      .markdown-document li {
+        color: #3d4852;
+        font-size: 0.98rem;
+      }
+
+      .markdown-document p + p,
+      .markdown-document p + ul,
+      .markdown-document p + ol,
+      .markdown-document ul + p,
+      .markdown-document ol + p,
+      .markdown-document table + p,
+      .markdown-document blockquote + p,
+      .markdown-document pre + p {
+        margin-top: 1rem;
+      }
+
+      .markdown-document ul,
+      .markdown-document ol {
+        padding-left: 1.35rem;
+      }
+
+      .markdown-document li + li {
+        margin-top: 0.45rem;
+      }
+
+      .doc-lead {
+        margin-top: 1rem;
+        color: #59636e;
+        font-size: 1.02rem;
+      }
+
+      .badge-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0;
+        list-style: none;
+      }
+
+      .badge-row li {
+        padding: 0.26rem 0.62rem;
+        border: 1px solid #d0d7de;
+        border-radius: 999px;
+        background: #f6f8fa;
+        color: #24292f;
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+
+      .toc-box {
+        margin-top: 1.2rem;
+        padding: 1rem 1.1rem;
+        border: 1px solid #d8dee4;
+        border-radius: 12px;
+        background: #f6f8fa;
+      }
+
+      .toc-box h2 {
+        margin-top: 0;
+        padding-bottom: 0;
+        border-bottom: 0;
+        font-size: 1rem;
+      }
+
+      .toc-box ul {
+        margin-top: 0.75rem;
+      }
+
+      .toc-box a,
+      .doc-link {
+        color: #0969da;
+        text-decoration: none;
+      }
+
+      .toc-box a:hover,
+      .toc-box a:focus-visible,
+      .doc-link:hover,
+      .doc-link:focus-visible {
+        text-decoration: underline;
+      }
+
+      hr {
+        margin: 1.6rem 0 0;
+        border: 0;
+        border-top: 1px solid #d8dee4;
+      }
+
+      table {
+        width: 100%;
+        margin-top: 1rem;
+        border-collapse: collapse;
+        font-size: 0.95rem;
+      }
+
+      th,
+      td {
+        padding: 0.72rem 0.85rem;
+        border: 1px solid #d8dee4;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        background: #f6f8fa;
+        color: #24292f;
+        font-weight: 700;
+      }
+
+      blockquote {
+        margin-top: 1rem;
+        padding: 0.2rem 0 0.2rem 1rem;
+        border-left: 4px solid #d0d7de;
+        color: #59636e;
+      }
+
+      pre {
+        margin-top: 1rem;
+        overflow-x: auto;
+        border: 1px solid #d0d7de;
+        border-radius: 12px;
+        background: #0d1117;
+        color: #e6edf3;
+      }
+
+      pre code {
+        display: block;
+        padding: 1rem 1.1rem;
+        border: 0;
+        border-radius: 0;
+        background: transparent;
+        color: inherit;
+        font-size: 0.92rem;
+        line-height: 1.65;
+      }
+
+      .check-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .check-list li {
+        display: flex;
+        gap: 0.55rem;
+        align-items: flex-start;
+      }
+
+      .check-list li::before {
+        content: "[x]";
+        color: #1a7f37;
+        font-weight: 700;
+      }
+
+      .doc-footer-links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.85rem;
+        margin-top: 1.2rem;
+      }
+
+      @media (max-width: 1080px) {
+        .page-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .markdown-document {
+          padding: 1.35rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="index.html">shin yeong ok / Sample Project</a>
+        <nav class="site-nav" aria-label="README 문서 이동">
+          <a href="#readme">README</a>
+          <a href="#overview">Overview</a>
+          <a href="#features">Features</a>
+          <a href="#retrospective">Retrospective</a>
+          <a href="index.html">Back</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell">
+      <aside class="project-sidebar doc-sidebar">
+        <section class="side-card">
+          <p class="side-label">Repository</p>
+          <h1>Sample Project</h1>
+          <p class="side-path">young-ok-sin / sample-project</p>
+          <p class="side-summary">
+            포트폴리오 상세 페이지를 GitHub README처럼 읽히게 만들기 위한 샘플 문서형 레이아웃입니다.
+          </p>
+          <div class="doc-meta-list">
+            <div>
+              <strong>Status</strong>
+              <span>build-passing · draft-ready</span>
+            </div>
+            <div>
+              <strong>Role</strong>
+              <span>Backend Developer / Documentation Owner</span>
+            </div>
+            <div>
+              <strong>Why this page</strong>
+              <span>카드 소개가 아니라 문서형 정리를 보여주기 위한 샘플</span>
+            </div>
+          </div>
+          <ul class="topic-list">
+            <li>README</li>
+            <li>GitHub</li>
+            <li>Markdown</li>
+            <li>Portfolio</li>
+          </ul>
+        </section>
+      </aside>
+
+      <div class="content-column">
+        <article class="markdown-document" id="readme">
+          <p class="eyebrow">README</p>
+          <h1>Sample Project</h1>
+          <p class="doc-lead">
+            GitHub에서 렌더된 README처럼 보이도록 구성한 샘플 프로젝트 상세 페이지입니다. 섹션 카드 묶음보다 하나의 문서를
+            읽는 흐름을 우선하고, 실제 포트폴리오에 복사해 쓸 수 있는 기본 뼈대를 제공합니다.
+          </p>
+
+          <ul class="badge-row" aria-label="project badges">
+            <li>build-passing</li>
+            <li>coverage-92%</li>
+            <li>release-v1.2.0</li>
+            <li>license-MIT</li>
+          </ul>
+
+          <section class="toc-box">
+            <h2>Table of Contents</h2>
+            <ul>
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#tech-stack">Tech Stack</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#installation">Installation</a></li>
+              <li><a href="#directory-structure">Directory Structure</a></li>
+              <li><a href="#troubleshooting">Troubleshooting</a></li>
+              <li><a href="#retrospective">Retrospective</a></li>
+            </ul>
+          </section>
+
+          <h2 id="overview">Overview</h2>
+          <p>
+            이 페이지는 기존 포트폴리오의 프로젝트 상세 페이지를 보다 문서형으로 보여주기 위한 샘플입니다. 핵심 목표는 “프로젝트를
+            설명하는 카드”가 아니라 “GitHub README를 읽는 경험”에 가깝게 만드는 것입니다.
+          </p>
+          <blockquote>
+            프로젝트 소개, 설치 방법, 디렉터리 구조, 트러블슈팅, 회고까지 한 번에 읽히는 흐름을 만드는 데 집중했습니다.
+          </blockquote>
+          <p>
+            본문은 하나의 긴 문서로 이어지고, 중요한 정보는 배지와 목차, 표, 코드 블록 같은 README 익숙한 장치로 정리합니다.
+          </p>
+
+          <h2 id="tech-stack">Tech Stack</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Stack</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Backend</td>
+                <td>Java, Spring Boot</td>
+                <td>API, 비즈니스 로직, 상태 전이 구조를 설명하기 좋음</td>
+              </tr>
+              <tr>
+                <td>Data</td>
+                <td>MySQL, Redis</td>
+                <td>저장과 조회 흐름을 README 안에서 구분하기 쉬움</td>
+              </tr>
+              <tr>
+                <td>Infra</td>
+                <td>AWS S3, GitHub Actions</td>
+                <td>배포 및 정적 자산, 문서 자동화 예시를 함께 보여주기 좋음</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="features">Features</h2>
+          <ul>
+            <li>프로젝트 목적과 역할을 문서 상단에서 바로 이해할 수 있도록 구성</li>
+            <li>설치 방법과 디렉터리 구조를 포함해 실제 README처럼 읽히는 본문 흐름 제공</li>
+            <li>코드 블록, 표, 인용문, 체크리스트를 함께 사용해 텍스트만 늘어지지 않게 구성</li>
+            <li>포트폴리오 컨텍스트는 유지하되, 카드보다 문서 경험을 우선시함</li>
+          </ul>
+
+          <h2 id="installation">Installation</h2>
+          <p>빠르게 실행 흐름을 보여주는 README 예시입니다.</p>
+          <pre><code>git clone https://github.com/example/sample-project.git
+cd sample-project
+./gradlew bootRun</code></pre>
+
+          <h2 id="directory-structure">Directory Structure</h2>
+          <pre><code>src/
+  main/
+    java/
+      project/
+        domain/
+        api/
+        infra/
+docs/
+tests/</code></pre>
+
+          <h2 id="troubleshooting">Troubleshooting</h2>
+          <h3>문제</h3>
+          <p>이전 샘플은 README 내용을 카드로 잘게 나눈 형태라, GitHub README를 읽는 익숙한 경험과는 거리가 있었습니다.</p>
+          <h3>해결</h3>
+          <p>
+            본문을 하나의 문서로 통합하고, 제목 계층과 표, 인용문, 설치 코드 블록, 디렉터리 구조 같은 README 핵심 요소를 전면으로
+            올렸습니다.
+          </p>
+          <h3>결과</h3>
+          <p>지금은 프로젝트 소개 페이지라기보다 실제 저장소의 README를 읽는 느낌에 훨씬 가깝습니다.</p>
+
+          <h2 id="retrospective">Retrospective</h2>
+          <ul class="check-list">
+            <li>프로젝트를 처음 보는 사람도 문서 흐름만 따라가면 구조를 이해할 수 있어야 한다.</li>
+            <li>카드 디자인보다 README 문법의 위계를 먼저 보여준다.</li>
+            <li>배지, 목차, 표, 코드 블록, 체크리스트는 과하지 않게 핵심만 남긴다.</li>
+            <li>실제 프로젝트에 적용할 때는 링크와 수치를 실데이터로 교체하면 된다.</li>
+          </ul>
+
+          <hr>
+
+          <div class="doc-footer-links">
+            <a class="doc-link" href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer">GitHub</a>
+            <a class="doc-link" href="#readme">Back to top</a>
+          </div>
+        </article>
+      </div>
+    </main>
+  </body>
+</html>

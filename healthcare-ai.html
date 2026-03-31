@@ -3,51 +3,51 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>의료 데이터 인증 AI 앱 | Case Study</title>
+    <title>Healthcare AI | README Detail</title>
     <meta
       name="description"
-      content="블록체인 기반 의료 데이터 인증 및 AI 활용 의료 애플리케이션 프로젝트 상세 페이지"
+      content="Healthcare AI 프로젝트의 blockchain 연동과 spring-boot 백엔드 구현을 README 형식으로 정리한 상세 페이지"
     >
     <link rel="icon" href="data:,">
     <link rel="stylesheet" href="moa.css">
   </head>
-  <body>
+  <body class="detail-page">
     <header class="site-header">
       <div class="header-inner">
         <a class="brand" href="index.html">shin yeong ok / Healthcare AI</a>
-        <nav class="site-nav" aria-label="프로젝트 상세 이동">
+        <nav class="site-nav" aria-label="README 문서 이동">
           <a href="#readme">README</a>
-          <a href="#role">Role</a>
-          <a href="#implementation">Implementation</a>
+          <a href="#overview">Overview</a>
+          <a href="#features">Key Features</a>
+          <a href="#links">Links</a>
           <a href="index.html">Back</a>
         </nav>
       </div>
     </header>
 
-    <main class="page-shell">
-      <aside class="project-sidebar">
+    <main class="page-shell" data-readme-layout="true">
+      <aside class="project-sidebar doc-sidebar">
         <section class="side-card">
           <p class="side-label">Repository</p>
-          <h1>의료 데이터 인증 AI 앱</h1>
+          <h1>Healthcare AI</h1>
           <p class="side-path">my-health-block-original-server</p>
           <p class="side-summary">
-            블록체인 기반 의료 데이터 인증과 AI를 활용한 노약자 맞춤형 의료 애플리케이션 개발 프로젝트입니다.
+            의료 데이터 송수신, 외부 API 연동, blockchain 기록 흐름을 함께 다룬 팀 프로젝트입니다.
           </p>
-          <span class="pill">Team 4</span>
-          <dl class="side-meta">
+          <div class="doc-meta-list">
             <div>
-              <dt>기간</dt>
-              <dd>2024.01 - 2024.06</dd>
+              <strong>Status</strong>
+              <span>team-4 · academic-project</span>
             </div>
             <div>
-              <dt>역할</dt>
-              <dd>팀장 및 백엔드 개발</dd>
+              <strong>Role</strong>
+              <span>팀장 및 백엔드 개발</span>
             </div>
             <div>
-              <dt>기술 환경</dt>
-              <dd>Spring Boot / MySQL / GitHub</dd>
+              <strong>Focus</strong>
+              <span>healthcare, blockchain, api, spring-boot</span>
             </div>
-          </dl>
+          </div>
           <ul class="topic-list">
             <li>healthcare</li>
             <li>blockchain</li>
@@ -58,89 +58,143 @@
       </aside>
 
       <div class="content-column">
-        <section class="readme-panel" id="readme">
+        <article class="markdown-document" id="readme">
           <p class="eyebrow">README</p>
-          <h2>의료 데이터 인증과 외부 연동을 함께 다룬 백엔드 프로젝트</h2>
-          <p class="hero-copy">
-            의료 데이터 송수신, 외부 의료 API 연동, 블록체인 전송 로직, 원격 서버 운영까지 연결된 프로젝트였습니다.
-            팀장과 백엔드 개발을 동시에 맡으며 서비스 기능과 기술 구현을 모두 주도했습니다.
+          <h1>Healthcare AI</h1>
+          <p class="doc-lead">
+            블록체인 기반 의료 데이터 인증과 외부 의료 API 연동을 함께 다룬 프로젝트입니다. 팀장과 백엔드 개발 역할을 동시에 맡아
+            서비스 방향과 구현을 함께 이끌었습니다.
           </p>
-        </section>
 
-        <section class="content-section" id="role">
-          <div class="section-title">
-            <h3>Role</h3>
-            <span>What I owned</span>
-          </div>
-          <div class="grid two">
-            <article class="panel-card">
-              <h4>Service Goal</h4>
-              <p>
-                블록체인 기반의 의료 데이터 인증과 AI를 활용한 노약자 맞춤형 의료 애플리케이션을 개발해
-                데이터 신뢰성과 편의 기능을 함께 제공하는 것이 목표였습니다.
-              </p>
-            </article>
-            <article class="panel-card">
-              <h4>Ownership</h4>
-              <ul class="bullet-list">
-                <li>팀장으로서 일정과 개발 진행 조율</li>
-                <li>백엔드 회원 관리 코드 개발</li>
-                <li>외부 의료 API 통신 코드 개발</li>
-                <li>의료 데이터 해시 변환 후 블록체인 전송 로직 구현</li>
-              </ul>
-            </article>
-          </div>
-        </section>
+          <ul class="badge-row" aria-label="project badges">
+            <li>healthcare</li>
+            <li>blockchain</li>
+            <li>api</li>
+            <li>spring-boot</li>
+          </ul>
 
-        <section class="content-section" id="implementation">
-          <div class="section-title">
-            <h3>Implementation</h3>
-            <span>Key features</span>
-          </div>
-          <div class="timeline">
-            <article class="panel-card">
-              <p class="step-label">01 Core Features</p>
-              <p>
-                의료 데이터 송수신, 건강 편의 기능, 의료 질의응답 커뮤니티를 주요 기능으로 구성했습니다.
-              </p>
-            </article>
-            <article class="panel-card">
-              <p class="step-label">02 Backend Work</p>
-              <p>
-                사용자 계정 관리와 외부 API 통신을 담당했고, 의료 데이터를 해시로 변환해 블록체인으로 전송하는
-                백엔드 로직을 구현했습니다.
-              </p>
-            </article>
-            <article class="panel-card">
-              <p class="step-label">03 Operations</p>
-              <p>
-                원격 서버 운영을 맡아 개발 환경과 실행 환경을 유지했고, 서비스 흐름이 실제로 작동하도록 운영까지 연결했습니다.
-              </p>
-            </article>
-            <article class="panel-card">
-              <p class="step-label">04 Outcome</p>
-              <p>
-                창의융합종합설계2 교과목에서 A+를 받았고, 이후 관련 프로젝트 경험이 대외활동과 후속 포트폴리오 구성의 기반이 됐습니다.
-              </p>
-            </article>
-          </div>
-        </section>
+          <section class="toc-box">
+            <h2>Table of Contents</h2>
+            <ul>
+              <li><a href="#overview">Overview</a></li>
+              <li><a href="#tech-stack">Tech Stack</a></li>
+              <li><a href="#features">Key Features</a></li>
+              <li><a href="#troubleshooting">Troubleshooting</a></li>
+              <li><a href="#retrospective">Retrospective</a></li>
+              <li><a href="#links">Links</a></li>
+            </ul>
+          </section>
 
-        <section class="content-section">
-          <div class="section-title">
-            <h3>Link</h3>
-            <span>Repository</span>
+          <h2 id="overview">Overview</h2>
+          <p>
+            프로젝트 목표는 의료 데이터의 신뢰성을 높이면서도, 노약자 맞춤형 편의 기능과 질의응답 경험을 함께 제공하는 것이었습니다.
+            저는 회원 관리, 외부 의료 API 통신, blockchain 전송 로직, 원격 서버 운영까지 맡았습니다.
+          </p>
+          <blockquote>
+            기술 포인트는 단일 기능 구현보다 “의료 데이터가 어떻게 들어오고, 검증되고, 저장되는가”를 일관되게 연결하는 것이었습니다.
+          </blockquote>
+
+          <h2 id="tech-stack">Tech Stack</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Stack</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Backend</td>
+                <td>spring-boot, MySQL</td>
+                <td>회원 관리, 의료 API 연동, 데이터 저장 구조 구현</td>
+              </tr>
+              <tr>
+                <td>Integration</td>
+                <td>external api, blockchain</td>
+                <td>의료 데이터 수집과 해시 기반 전송 흐름 구성</td>
+              </tr>
+              <tr>
+                <td>Ops</td>
+                <td>GitHub, remote server</td>
+                <td>팀 운영과 실제 실행 환경 관리</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="features">Key Features</h2>
+          <ul>
+            <li>사용자 계정 관리와 인증 관련 백엔드 구현</li>
+            <li>외부 의료 API 통신과 데이터 수집 흐름 연결</li>
+            <li>수집한 정보를 hash 처리해 blockchain 기록 흐름으로 전송</li>
+            <li>원격 서버 운영과 팀 개발 일정 조율 병행</li>
+          </ul>
+
+          <pre><code>request medical data
+-> validate member
+-> transform to hash
+-> send to blockchain
+-> persist service state</code></pre>
+
+          <h2 id="troubleshooting">Troubleshooting</h2>
+          <h3>Problem</h3>
+          <p>의료 API 연동, blockchain 기록, 사용자 기능이 동시에 연결되다 보니 책임 경계가 쉽게 흐려졌습니다.</p>
+          <h3>Solution</h3>
+          <p>
+            통신, 데이터 변환, 전송 로직을 단계별로 분리하고, 팀장 역할에서는 일정 조율과 구현 우선순위를 함께 정리했습니다.
+          </p>
+          <h3>Result</h3>
+          <p>서비스 목표와 백엔드 구현 범위가 정리되면서 팀 작업 흐름이 안정화됐고, 프로젝트 결과물도 일관되게 완성할 수 있었습니다.</p>
+
+          <h2 id="retrospective">Retrospective</h2>
+          <ul class="check-list">
+            <li>외부 시스템이 늘어날수록 책임 분리가 먼저 필요하다.</li>
+            <li>팀장 역할과 구현 역할을 함께 할 때는 우선순위 정리가 특히 중요하다.</li>
+            <li>기능 설명보다 데이터 흐름 설명이 이 프로젝트에서는 더 중요했다.</li>
+          </ul>
+
+          <h2 id="links">Links</h2>
+          <p>
+            <a class="doc-link" href="https://github.com/young-ok-sin/my-health-block-original-server" target="_blank" rel="noreferrer">
+              github.com/young-ok-sin/my-health-block-original-server
+            </a>
+          </p>
+
+          <hr>
+
+          <div class="doc-footer-links">
+            <a class="doc-action" href="https://github.com/young-ok-sin/my-health-block-original-server" target="_blank" rel="noreferrer">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M6 3.5H3.5v9h9V10"></path>
+                <path d="M8.5 3.5h4v4"></path>
+                <path d="M12.5 3.5 7 9"></path>
+              </svg>
+              <span>Open Repository</span>
+            </a>
+            <a class="doc-action" href="#readme">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 12.5v-9"></path>
+                <path d="M4.5 7 8 3.5 11.5 7"></path>
+              </svg>
+              <span>Back to top</span>
+            </a>
           </div>
-          <article class="panel-card">
-            <h4>GitHub</h4>
-            <p>
-              <a href="https://github.com/young-ok-sin/my-health-block-original-server" target="_blank" rel="noreferrer">
-                github.com/young-ok-sin/my-health-block-original-server
-              </a>
-            </p>
-          </article>
-        </section>
+        </article>
       </div>
+
+      <aside class="section-nav">
+        <div class="section-nav-card">
+          <p class="section-nav-title">Sections</p>
+          <ul class="section-nav-list">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li><a href="#troubleshooting">Troubleshooting</a></li>
+            <li><a href="#retrospective">Retrospective</a></li>
+            <li><a href="#links">Links</a></li>
+          </ul>
+        </div>
+      </aside>
     </main>
   </body>
 </html>

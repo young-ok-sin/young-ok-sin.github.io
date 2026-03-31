@@ -17,3 +17,10 @@ docs/superpowers/
 *.events
 *.server-info
 
+# Local preview files
+github-inspired-preview.html
+redesign-directions-preview.html
+link-placement-preview.html
+
+# Python cache
+__pycache__/
