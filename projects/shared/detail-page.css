@@ -419,6 +419,11 @@ code {
   list-style: none;
 }
 
+.markdown-document .badge-row {
+  padding-left: 0;
+  margin-left: 0;
+}
+
 .badge-row li {
   padding: 0.26rem 0.62rem;
   border: 1px solid #d0d7de;

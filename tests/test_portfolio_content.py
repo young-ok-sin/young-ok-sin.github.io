@@ -46,6 +46,14 @@ class PortfolioContentTest(unittest.TestCase):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="kepco-enc.html"', index_html)
 
+    def test_kepco_experience_card_uses_jump_icon(self):
+        index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+        card_start = '<a class="panel-card project-card-link" href="kepco-enc.html" aria-label="한국전력기술 상세 페이지로 이동">'
+        card_end = "</a>"
+        self.assertIn(card_start, index_html)
+        kepco_card = index_html.split(card_start, 1)[1].split(card_end, 1)[0]
+        self.assertIn('<span class="card-jump" aria-hidden="true">', kepco_card)
+
     def test_all_detail_pages_use_readme_document_structure(self):
         for project_page in DETAIL_PAGES.values():
             with self.subTest(page=project_page):
@@ -113,6 +121,22 @@ class PortfolioContentTest(unittest.TestCase):
                 detail_html = (ROOT / project_page).read_text(encoding="utf-8")
                 for phrase in phrases:
                     self.assertIn(phrase, detail_html)
+
+    def test_moa_page_uses_rewritten_portfolio_copy(self):
+        detail_html = (ROOT / "projects/moa/page.html").read_text(encoding="utf-8")
+        for phrase in [
+            "금융 데이터 기반 목표 관리 서비스에서 목표 생성 이후 AI 후처리까지 이어지는 흐름을 설계한 백엔드 프로젝트입니다.",
+            "목표 생성 API를 구현하면서 단순 저장에 그치지 않고 우선순위 이동, 예산 재배치, 즉시 저축 반영까지 하나의 흐름으로 묶었습니다.",
+            "영상 생성은 polling scheduler로 추적했고, PROCESSING, SUCCEEDED, FAILED 상태를 나눠 장시간 작업을 관리했습니다.",
+            "@Version 기반 낙관적 락과 조건부 update를 적용해 비동기 상태 변경 중 오래된 데이터가 최신 상태를 덮어쓰는 문제를 줄였습니다.",
+            "외부 연동이 포함된 기능은 요청-응답 흐름과 후처리 흐름을 분리해야 안정적으로 운영할 수 있다는 점을 확인했습니다.",
+        ]:
+            self.assertIn(phrase, detail_html)
+        self.assertNotIn(
+            "이 문서에서는 MoA에서 맡았던 목표 생성, 비동기 파이프라인, 상태 정합성 문제를 포트폴리오용 README 형식으로 정리했습니다.",
+            detail_html,
+        )
+        self.assertNotIn('class="badge-row"', detail_html)
 
     def test_healthcare_and_sebook_repo_links_remain(self):
         healthcare_html = (ROOT / "projects/healthcare-ai/page.html").read_text(encoding="utf-8")
