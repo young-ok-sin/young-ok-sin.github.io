@@ -16,6 +16,7 @@ docs/superpowers/
 *.stderr
 *.events
 *.server-info
+.pages-dist/
 
 # Local preview files
 github-inspired-preview.html

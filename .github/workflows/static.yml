@@ -37,12 +37,14 @@ jobs:
         run: |
           mkdir -p .pages-dist
           cp index.html .pages-dist/
-          cp style.css .pages-dist/
           cp moa.html .pages-dist/
-          cp moa.css .pages-dist/
           cp healthcare-ai.html .pages-dist/
+          cp kepco-enc.html .pages-dist/
           cp sebook.html .pages-dist/
-          cp profile.jpg .pages-dist/
+          cp -R styles .pages-dist/
+          cp -R assets .pages-dist/
+          cp -R projects .pages-dist/
+          cp -R examples .pages-dist/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
