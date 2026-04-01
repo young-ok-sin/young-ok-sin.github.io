@@ -3,23 +3,38 @@ import unittest
 
 
 ROOT = pathlib.Path(__file__).resolve().parents[1]
-DETAIL_PAGES = [
-    "moa.html",
-    "healthcare-ai.html",
-    "sebook.html",
-    "kepco-enc.html",
-]
+DETAIL_PAGES = {
+    "moa.html": "projects/moa/page.html",
+    "healthcare-ai.html": "projects/healthcare-ai/page.html",
+    "sebook.html": "projects/sebook/page.html",
+    "kepco-enc.html": "projects/kepco-enc/page.html",
+}
+SHARED_DETAIL_CSS = "projects/shared/detail-page.css"
+SHARED_DETAIL_LOADER = "projects/shared/detail-page-loader.js"
 
 
 class PortfolioContentTest(unittest.TestCase):
+    def test_root_detail_pages_keep_public_urls(self):
+        for entry_page, project_page in DETAIL_PAGES.items():
+            with self.subTest(page=entry_page):
+                detail_html = (ROOT / entry_page).read_text(encoding="utf-8")
+                self.assertIn(f'href="{SHARED_DETAIL_CSS}"', detail_html)
+                self.assertIn(f'src="{SHARED_DETAIL_LOADER}"', detail_html)
+                self.assertIn(f'data-detail-source="{project_page}"', detail_html)
+
+    def test_project_folder_pages_exist(self):
+        for project_page in DETAIL_PAGES.values():
+            with self.subTest(page=project_page):
+                self.assertTrue((ROOT / project_page).exists())
+
     def test_kepco_card_links_to_detail_page(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="kepco-enc.html"', index_html)
 
     def test_all_detail_pages_use_readme_document_structure(self):
-        for page_name in DETAIL_PAGES:
-            with self.subTest(page=page_name):
-                detail_html = (ROOT / page_name).read_text(encoding="utf-8")
+        for project_page in DETAIL_PAGES.values():
+            with self.subTest(page=project_page):
+                detail_html = (ROOT / project_page).read_text(encoding="utf-8")
                 self.assertIn('class="page-shell"', detail_html)
                 self.assertIn('class="markdown-document"', detail_html)
                 for phrase in [
@@ -38,9 +53,9 @@ class PortfolioContentTest(unittest.TestCase):
                 self.assertIn("<pre><code>", detail_html)
 
     def test_all_detail_pages_have_right_side_section_navigation(self):
-        for page_name in DETAIL_PAGES:
-            with self.subTest(page=page_name):
-                detail_html = (ROOT / page_name).read_text(encoding="utf-8")
+        for project_page in DETAIL_PAGES.values():
+            with self.subTest(page=project_page):
+                detail_html = (ROOT / project_page).read_text(encoding="utf-8")
                 self.assertIn('class="section-nav"', detail_html)
                 for anchor in [
                     'href="#overview"',
@@ -53,19 +68,19 @@ class PortfolioContentTest(unittest.TestCase):
                     self.assertIn(anchor, detail_html)
 
     def test_css_hides_right_side_section_navigation_on_mobile(self):
-        css = (ROOT / "moa.css").read_text(encoding="utf-8")
+        css = (ROOT / SHARED_DETAIL_CSS).read_text(encoding="utf-8")
         self.assertIn(".section-nav", css)
         self.assertIn("display: none;", css)
 
     def test_all_detail_pages_use_icon_style_footer_actions(self):
-        for page_name in DETAIL_PAGES:
-            with self.subTest(page=page_name):
-                detail_html = (ROOT / page_name).read_text(encoding="utf-8")
+        for project_page in DETAIL_PAGES.values():
+            with self.subTest(page=project_page):
+                detail_html = (ROOT / project_page).read_text(encoding="utf-8")
                 self.assertIn('class="doc-action"', detail_html)
                 self.assertIn("<svg", detail_html)
 
     def test_css_contains_shared_detail_page_mobile_rules(self):
-        css = (ROOT / "moa.css").read_text(encoding="utf-8")
+        css = (ROOT / SHARED_DETAIL_CSS).read_text(encoding="utf-8")
         self.assertIn(".detail-page", css)
         self.assertIn(".detail-page .page-shell[data-readme-layout=\"true\"]", css)
         self.assertIn(".detail-page .markdown-document", css)
@@ -73,20 +88,20 @@ class PortfolioContentTest(unittest.TestCase):
 
     def test_detail_pages_preserve_project_identity(self):
         expected_labels = {
-            "moa.html": ["MoA", "state-transition", "polling"],
-            "healthcare-ai.html": ["Healthcare AI", "blockchain", "spring-boot"],
-            "sebook.html": ["SEBook", "recommendation", "community"],
-            "kepco-enc.html": ["KEPCO", "Paper PDF Extractor", "ocr"],
+            "projects/moa/page.html": ["MoA", "state-transition", "polling"],
+            "projects/healthcare-ai/page.html": ["Healthcare AI", "blockchain", "spring-boot"],
+            "projects/sebook/page.html": ["SEBook", "recommendation", "community"],
+            "projects/kepco-enc/page.html": ["KEPCO", "Paper PDF Extractor", "ocr"],
         }
-        for page_name, phrases in expected_labels.items():
-            with self.subTest(page=page_name):
-                detail_html = (ROOT / page_name).read_text(encoding="utf-8")
+        for project_page, phrases in expected_labels.items():
+            with self.subTest(page=project_page):
+                detail_html = (ROOT / project_page).read_text(encoding="utf-8")
                 for phrase in phrases:
                     self.assertIn(phrase, detail_html)
 
     def test_healthcare_and_sebook_repo_links_remain(self):
-        healthcare_html = (ROOT / "healthcare-ai.html").read_text(encoding="utf-8")
-        sebook_html = (ROOT / "sebook.html").read_text(encoding="utf-8")
+        healthcare_html = (ROOT / "projects/healthcare-ai/page.html").read_text(encoding="utf-8")
+        sebook_html = (ROOT / "projects/sebook/page.html").read_text(encoding="utf-8")
 
         self.assertIn(
             'href="https://github.com/young-ok-sin/my-health-block-original-server" target="_blank" rel="noreferrer"',
@@ -98,7 +113,7 @@ class PortfolioContentTest(unittest.TestCase):
         )
 
     def test_kepco_detail_page_keeps_pdf_and_repo_links(self):
-        detail_html = (ROOT / "kepco-enc.html").read_text(encoding="utf-8")
+        detail_html = (ROOT / "projects/kepco-enc/page.html").read_text(encoding="utf-8")
         self.assertIn(
             'href="assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer"',
             detail_html,

@@ -9,192 +9,25 @@
       content="SEBook 프로젝트의 recommendation 로직과 community 기능을 README 형식으로 정리한 상세 페이지"
     >
     <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="moa.css">
+    <link rel="stylesheet" href="projects/shared/detail-page.css">
+    <script defer src="projects/shared/detail-page-loader.js"></script>
+    <style>
+      body[data-detail-source] {
+        margin: 0;
+        min-height: 100vh;
+        background: #f6f8fa;
+      }
+
+      #detail-page-fallback {
+        padding: 2rem;
+        color: #59636e;
+        font: 500 1rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+    </style>
   </head>
-  <body class="detail-page">
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="index.html">shin yeong ok / SEBook</a>
-        <nav class="site-nav" aria-label="README 문서 이동">
-          <a href="#readme">README</a>
-          <a href="#overview">Overview</a>
-          <a href="#features">Key Features</a>
-          <a href="#links">Links</a>
-          <a href="index.html">Back</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="page-shell" data-readme-layout="true">
-      <aside class="project-sidebar doc-sidebar">
-        <section class="side-card">
-          <p class="side-label">Repository</p>
-          <h1>SEBook</h1>
-          <p class="side-path">SEBook_backend</p>
-          <p class="side-summary">
-            recommendation 로직과 community 기능을 함께 설계해 독서 활동을 촉진하려고 했던 프로젝트입니다.
-          </p>
-          <div class="doc-meta-list">
-            <div>
-              <strong>Status</strong>
-              <span>team-3 · completed</span>
-            </div>
-            <div>
-              <strong>Role</strong>
-              <span>프로젝트 팀장 / 백엔드 총괄</span>
-            </div>
-            <div>
-              <strong>Focus</strong>
-              <span>recommendation, community, django, mysql</span>
-            </div>
-          </div>
-          <ul class="topic-list">
-            <li>django</li>
-            <li>recommendation</li>
-            <li>community</li>
-            <li>mysql</li>
-          </ul>
-        </section>
-      </aside>
-
-      <div class="content-column">
-        <article class="markdown-document" id="readme">
-          <p class="eyebrow">README</p>
-          <h1>SEBook</h1>
-          <p class="doc-lead">
-            독서 데이터를 기반으로 recommendation 기능을 제공하면서, 사용자 간 community 상호작용도 함께 설계한 프로젝트입니다.
-            팀장과 백엔드 총괄 역할을 맡아 서비스의 핵심 구조를 정리했습니다.
-          </p>
-
-          <ul class="badge-row" aria-label="project badges">
-            <li>recommendation</li>
-            <li>community</li>
-            <li>django</li>
-            <li>mysql</li>
-          </ul>
-
-          <section class="toc-box">
-            <h2>Table of Contents</h2>
-            <ul>
-              <li><a href="#overview">Overview</a></li>
-              <li><a href="#tech-stack">Tech Stack</a></li>
-              <li><a href="#features">Key Features</a></li>
-              <li><a href="#troubleshooting">Troubleshooting</a></li>
-              <li><a href="#retrospective">Retrospective</a></li>
-              <li><a href="#links">Links</a></li>
-            </ul>
-          </section>
-
-          <h2 id="overview">Overview</h2>
-          <p>
-            SEBook은 독서 기록과 취향 데이터를 바탕으로 도서를 추천하고, 사용자 간 감상을 공유할 수 있도록 만든 서비스입니다.
-            추천 결과가 고립되지 않도록 community 기능을 함께 설계한 점이 특징입니다.
-          </p>
-          <blockquote>
-            이 프로젝트의 핵심은 단순 추천보다 “추천 이후의 상호작용”까지 연결하는 것이었습니다.
-          </blockquote>
-
-          <h2 id="tech-stack">Tech Stack</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Area</th>
-                <th>Stack</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Backend</td>
-                <td>Django, MySQL</td>
-                <td>게시판과 추천 데이터 흐름을 빠르게 구현</td>
-              </tr>
-              <tr>
-                <td>Recommendation</td>
-                <td>cosine similarity, vector features</td>
-                <td>도서 제목, 작가, 설명 기반 recommendation 계산</td>
-              </tr>
-              <tr>
-                <td>Community</td>
-                <td>post, review, interaction</td>
-                <td>사용자 활동이 추천 경험과 이어지도록 설계</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h2 id="features">Key Features</h2>
-          <ul>
-            <li>recommendation 로직으로 유사한 도서를 탐색</li>
-            <li>community 게시판에서 독후감과 인상 깊은 문장을 공유</li>
-            <li>저장 도서와 유사도 계산을 연결해 추천 흐름 구성</li>
-            <li>팀장 역할로 데이터 수집, DB 구조, 기능 우선순위 조율</li>
-          </ul>
-
-          <pre><code>book metadata
--> vectorize title / author / summary
--> calculate similarity
--> blend save-count signal
--> deliver recommendation</code></pre>
-
-          <h2 id="troubleshooting">Troubleshooting</h2>
-          <h3>Problem</h3>
-          <p>OpenAPI 데이터 수집 경험이 부족해 초기 일정이 밀렸고, 좋아요 기능 미반영으로 DB 재설계도 필요했습니다.</p>
-          <h3>Solution</h3>
-          <p>
-            데이터 확보 계획을 먼저 세우고, 추천과 community 기능이 함께 작동하는 관점에서 테이블 구조를 다시 정리했습니다.
-          </p>
-          <h3>Result</h3>
-          <p>추천 정확도만이 아니라 서비스 전체 흐름을 함께 보는 설계 습관을 얻었고, 프로젝트 결과도 안정적으로 정리할 수 있었습니다.</p>
-
-          <h2 id="retrospective">Retrospective</h2>
-          <ul class="check-list">
-            <li>추천 시스템은 데이터 수집 계획이 설계만큼 중요하다.</li>
-            <li>community 기능은 추천 경험을 지속시키는 장치로 유효했다.</li>
-            <li>초기 DB 설계에서 후속 기능을 충분히 상정해야 한다.</li>
-          </ul>
-
-          <h2 id="links">Links</h2>
-          <p>
-            <a class="doc-link" href="https://github.com/young-ok-sin/SEBook_backend" target="_blank" rel="noreferrer">
-              github.com/young-ok-sin/SEBook_backend
-            </a>
-          </p>
-
-          <hr>
-
-          <div class="doc-footer-links">
-            <a class="doc-action" href="https://github.com/young-ok-sin/SEBook_backend" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M6 3.5H3.5v9h9V10"></path>
-                <path d="M8.5 3.5h4v4"></path>
-                <path d="M12.5 3.5 7 9"></path>
-              </svg>
-              <span>Open Repository</span>
-            </a>
-            <a class="doc-action" href="#readme">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M8 12.5v-9"></path>
-                <path d="M4.5 7 8 3.5 11.5 7"></path>
-              </svg>
-              <span>Back to top</span>
-            </a>
-          </div>
-        </article>
-      </div>
-
-      <aside class="section-nav">
-        <div class="section-nav-card">
-          <p class="section-nav-title">Sections</p>
-          <ul class="section-nav-list">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#tech-stack">Tech Stack</a></li>
-            <li><a href="#features">Key Features</a></li>
-            <li><a href="#troubleshooting">Troubleshooting</a></li>
-            <li><a href="#retrospective">Retrospective</a></li>
-            <li><a href="#links">Links</a></li>
-          </ul>
-        </div>
-      </aside>
-    </main>
+  <body data-detail-source="projects/sebook/page.html">
+    <div id="detail-page-root" hidden></div>
+    <p id="detail-page-fallback">Loading detail page...</p>
+    <noscript>This page requires JavaScript.</noscript>
   </body>
 </html>

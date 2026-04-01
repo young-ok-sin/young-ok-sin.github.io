@@ -9,217 +9,25 @@
       content="KEPCO 현장실습에서 수행한 ocr 분석과 Paper PDF Extractor 파이프라인을 README 형식으로 정리한 상세 페이지"
     >
     <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="moa.css">
+    <link rel="stylesheet" href="projects/shared/detail-page.css">
+    <script defer src="projects/shared/detail-page-loader.js"></script>
+    <style>
+      body[data-detail-source] {
+        margin: 0;
+        min-height: 100vh;
+        background: #f6f8fa;
+      }
+
+      #detail-page-fallback {
+        padding: 2rem;
+        color: #59636e;
+        font: 500 1rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+    </style>
   </head>
-  <body class="detail-page">
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="index.html">shin yeong ok / KEPCO</a>
-        <nav class="site-nav" aria-label="README 문서 이동">
-          <a href="#readme">README</a>
-          <a href="#overview">Overview</a>
-          <a href="#features">Key Features</a>
-          <a href="#links">Links</a>
-          <a href="index.html">Back</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="page-shell" data-readme-layout="true">
-      <aside class="project-sidebar doc-sidebar">
-        <section class="side-card">
-          <p class="side-label">Experience</p>
-          <h1>KEPCO</h1>
-          <p class="side-path">신영옥 / Smart Technology Team</p>
-          <p class="side-summary">
-            ocr 분석과 Paper PDF Extractor 전처리 파이프라인을 중심으로, 검색형 문장 데이터 준비 과정을 정리한 현장실습 경험입니다.
-          </p>
-          <div class="doc-meta-list">
-            <div>
-              <strong>Status</strong>
-              <span>internship · research-support</span>
-            </div>
-            <div>
-              <strong>Role</strong>
-              <span>스마트기술팀 현장실습생</span>
-            </div>
-            <div>
-              <strong>Focus</strong>
-              <span>ocr, labeling, rag, pandas</span>
-            </div>
-          </div>
-          <ul class="topic-list">
-            <li>ocr</li>
-            <li>labeling</li>
-            <li>rag</li>
-            <li>pandas</li>
-          </ul>
-          <section class="side-links" aria-label="자료 링크">
-            <p class="side-link-title">자료 링크</p>
-            <div class="side-link-actions">
-              <a class="side-link-action" href="assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer">
-                라벨링 결과 분석 PDF 바로 열기
-              </a>
-              <a class="side-link-action" href="https://github.com/young-ok-sin/pdf-extractor" target="_blank" rel="noreferrer">
-                GitHub 보기
-              </a>
-            </div>
-          </section>
-        </section>
-      </aside>
-
-      <div class="content-column">
-        <article class="markdown-document" id="readme">
-          <p class="eyebrow">README</p>
-          <h1>KEPCO</h1>
-          <p class="doc-lead">
-            한국전력기술 현장실습에서 수행한 ocr 품질 분석과 Paper PDF Extractor 전처리 파이프라인 작업을 한 문서로 정리했습니다.
-            핵심은 PDF 원문을 검색형 문장 데이터로 바꾸는 흐름을 설계하는 것이었습니다.
-          </p>
-
-          <ul class="badge-row" aria-label="project badges">
-            <li>ocr</li>
-            <li>labeling</li>
-            <li>rag</li>
-            <li>Paper PDF Extractor</li>
-          </ul>
-
-          <section class="toc-box">
-            <h2>Table of Contents</h2>
-            <ul>
-              <li><a href="#overview">Overview</a></li>
-              <li><a href="#tech-stack">Tech Stack</a></li>
-              <li><a href="#features">Key Features</a></li>
-              <li><a href="#troubleshooting">Troubleshooting</a></li>
-              <li><a href="#retrospective">Retrospective</a></li>
-              <li><a href="#links">Links</a></li>
-            </ul>
-          </section>
-
-          <h2 id="overview">Overview</h2>
-          <p>
-            현장실습에서는 문서 처리와 검색형 데이터 구조화 작업을 중심으로 실무를 경험했습니다. OCR 라벨링 결과를 분석하고,
-            PDF 문서를 RAG에 적합한 문장 데이터로 바꾸는 Paper PDF Extractor 흐름을 정리했습니다.
-          </p>
-          <blockquote>
-            단순 추출이 아니라 줄바꿈 복구, 노이즈 제거, 문장 분리, 저품질 문서 필터링까지 포함한 전처리 설계가 핵심이었습니다.
-          </blockquote>
-
-          <h2 id="tech-stack">Tech Stack</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Area</th>
-                <th>Stack</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Document Processing</td>
-                <td>ocr, labeling</td>
-                <td>문서 유형별 인식 성능 비교와 품질 개선</td>
-              </tr>
-              <tr>
-                <td>Pipeline</td>
-                <td>Python, pandas, rag preprocessing</td>
-                <td>검색형 문장 데이터 변환과 CSV 구조화</td>
-              </tr>
-              <tr>
-                <td>Output</td>
-                <td>PDF analysis, GitHub repository</td>
-                <td>분석 문서와 파이프라인 코드 결과 정리</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h2 id="features">Key Features</h2>
-          <ul>
-            <li>ocr 라벨링 결과를 검토하고 문제 구간을 분류</li>
-            <li>OCR 라이브러리와 전처리 전략을 비교해 품질 개선 포인트 도출</li>
-            <li>Paper PDF Extractor 흐름으로 PDF를 검색형 문장 데이터로 변환</li>
-            <li>저품질 문서를 걸러내고 CSV 단위로 후속 검색 시스템에 연결</li>
-          </ul>
-
-          <pre><code>PDF load
--> text extract
--> line-break recovery
--> noise filtering
--> sentence split
--> csv export</code></pre>
-
-          <h2 id="troubleshooting">Troubleshooting</h2>
-          <h3>Problem</h3>
-          <p>PDF 원문은 OCR 노이즈와 줄바꿈 깨짐이 많아, 그대로는 검색이나 임베딩 입력으로 쓰기 어려웠습니다.</p>
-          <h3>Solution</h3>
-          <p>
-            문서 유형별로 OCR 성능을 비교하고, 라벨링 결과를 바탕으로 전처리 기준을 보강했습니다.
-            이후 문장 단위 저장과 저품질 문서 필터링을 추가해 데이터셋 품질을 높였습니다.
-          </p>
-          <h3>Result</h3>
-          <p>Paper PDF Extractor는 추출 도구가 아니라 검색 가능한 문장 데이터셋을 만드는 파이프라인으로 정리될 수 있었습니다.</p>
-
-          <h2 id="retrospective">Retrospective</h2>
-          <ul class="check-list">
-            <li>OCR 성능은 모델 선택보다 입력 문서 유형 이해가 먼저다.</li>
-            <li>RAG 품질은 전처리 단계에서 크게 좌우된다.</li>
-            <li>실무 문서는 코드와 결과물을 함께 묶어야 설명력이 높아진다.</li>
-          </ul>
-
-          <h2 id="links">Links</h2>
-          <p>
-            <a class="doc-link" href="assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer">
-              assets/docs/kepco-labeling-analysis.pdf
-            </a>
-          </p>
-          <p>
-            <a class="doc-link" href="https://github.com/young-ok-sin/pdf-extractor" target="_blank" rel="noreferrer">
-              github.com/young-ok-sin/pdf-extractor
-            </a>
-          </p>
-
-          <hr>
-
-          <div class="doc-footer-links">
-            <a class="doc-action" href="assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M4 2.5h5l3 3v8H4z"></path>
-                <path d="M9 2.5v3h3"></path>
-              </svg>
-              <span>Open PDF</span>
-            </a>
-            <a class="doc-action" href="https://github.com/young-ok-sin/pdf-extractor" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M6 3.5H3.5v9h9V10"></path>
-                <path d="M8.5 3.5h4v4"></path>
-                <path d="M12.5 3.5 7 9"></path>
-              </svg>
-              <span>Open Repository</span>
-            </a>
-            <a class="doc-action" href="#readme">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M8 12.5v-9"></path>
-                <path d="M4.5 7 8 3.5 11.5 7"></path>
-              </svg>
-              <span>Back to top</span>
-            </a>
-          </div>
-        </article>
-      </div>
-
-      <aside class="section-nav">
-        <div class="section-nav-card">
-          <p class="section-nav-title">Sections</p>
-          <ul class="section-nav-list">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#tech-stack">Tech Stack</a></li>
-            <li><a href="#features">Key Features</a></li>
-            <li><a href="#troubleshooting">Troubleshooting</a></li>
-            <li><a href="#retrospective">Retrospective</a></li>
-            <li><a href="#links">Links</a></li>
-          </ul>
-        </div>
-      </aside>
-    </main>
+  <body data-detail-source="projects/kepco-enc/page.html">
+    <div id="detail-page-root" hidden></div>
+    <p id="detail-page-fallback">Loading detail page...</p>
+    <noscript>This page requires JavaScript.</noscript>
   </body>
 </html>

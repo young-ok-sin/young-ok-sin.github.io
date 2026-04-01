@@ -6,193 +6,28 @@
     <title>MoA | README Detail</title>
     <meta
       name="description"
-      content="MoA 프로젝트의 상태 전이, polling, 비동기 생성 파이프라인 설계를 README 형식으로 정리한 상세 페이지"
+      content="MoA 프로젝트의 상태 전이, polling, 비동기 생성 파이프라인을 README 형식으로 정리한 상세 페이지"
     >
     <link rel="icon" href="data:,">
-    <link rel="stylesheet" href="moa.css">
+    <link rel="stylesheet" href="projects/shared/detail-page.css">
+    <script defer src="projects/shared/detail-page-loader.js"></script>
+    <style>
+      body[data-detail-source] {
+        margin: 0;
+        min-height: 100vh;
+        background: #f6f8fa;
+      }
+
+      #detail-page-fallback {
+        padding: 2rem;
+        color: #59636e;
+        font: 500 1rem/1.6 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+      }
+    </style>
   </head>
-  <body class="detail-page page-moa">
-    <header class="site-header">
-      <div class="header-inner">
-        <a class="brand" href="index.html">shin yeong ok / MoA</a>
-        <nav class="site-nav" aria-label="README 문서 이동">
-          <a href="#readme">README</a>
-          <a href="#overview">Overview</a>
-          <a href="#features">Key Features</a>
-          <a href="#links">Links</a>
-          <a href="index.html">Back</a>
-        </nav>
-      </div>
-    </header>
-
-    <main class="page-shell" data-readme-layout="true">
-      <aside class="project-sidebar doc-sidebar">
-        <section class="side-card">
-          <p class="side-label">Repository</p>
-          <h1>MoA</h1>
-          <p class="side-path">shin yeong ok / MoA</p>
-          <p class="side-summary">
-            소비 분석과 목표 기반 예산 계획을 돕는 서비스에서, 상태 전이와 비동기 생성 흐름을 중심으로 설계한 백엔드 작업을 정리했습니다.
-          </p>
-          <div class="doc-meta-list">
-            <div>
-              <strong>Status</strong>
-              <span>build-passing · public-summary</span>
-            </div>
-            <div>
-              <strong>Role</strong>
-              <span>Plan 도메인 백엔드 담당</span>
-            </div>
-            <div>
-              <strong>Focus</strong>
-              <span>state-transition, polling, fcm, s3</span>
-            </div>
-          </div>
-          <ul class="topic-list">
-            <li>state-transition</li>
-            <li>polling</li>
-            <li>fcm</li>
-            <li>s3</li>
-          </ul>
-        </section>
-      </aside>
-
-      <div class="content-column">
-        <article class="markdown-document" id="readme">
-          <p class="eyebrow">README</p>
-          <h1>MoA</h1>
-          <p class="doc-lead">
-            목표 생성 이후의 사용자 흐름이 끊기지 않도록 상태 전이와 비동기 생성 파이프라인을 안정화한 프로젝트입니다.
-            이 문서는 MoA 백엔드 작업을 GitHub README처럼 한 번에 읽히도록 정리한 버전입니다.
-          </p>
-
-          <ul class="badge-row" aria-label="project badges">
-            <li>state-transition</li>
-            <li>polling</li>
-            <li>fcm</li>
-            <li>s3</li>
-          </ul>
-
-          <section class="toc-box">
-            <h2>Table of Contents</h2>
-            <ul>
-              <li><a href="#overview">Overview</a></li>
-              <li><a href="#tech-stack">Tech Stack</a></li>
-              <li><a href="#features">Key Features</a></li>
-              <li><a href="#troubleshooting">Troubleshooting</a></li>
-              <li><a href="#retrospective">Retrospective</a></li>
-              <li><a href="#links">Links</a></li>
-            </ul>
-          </section>
-
-          <h2 id="overview">Overview</h2>
-          <p>
-            MoA는 사회 초년생이 자신의 소비 흐름을 분석하고 목표 기반 예산을 세울 수 있도록 돕는 서비스입니다.
-            저는 Plan 도메인에서 목표 생성 이후의 상태 전이와 생성 작업 추적 흐름을 설계했습니다.
-          </p>
-          <blockquote>
-            핵심은 “생성 요청을 성공시켰는가”가 아니라 “생성 중 상태를 안정적으로 보여줄 수 있는가”였습니다.
-          </blockquote>
-
-          <h2 id="tech-stack">Tech Stack</h2>
-          <table>
-            <thead>
-              <tr>
-                <th>Area</th>
-                <th>Stack</th>
-                <th>Reason</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Backend</td>
-                <td>Java, Spring Boot</td>
-                <td>Plan 상태 관리와 API 흐름을 안정적으로 구성</td>
-              </tr>
-              <tr>
-                <td>Async</td>
-                <td>polling scheduler, fcm</td>
-                <td>생성 중 상태 추적과 완료 피드백 전달</td>
-              </tr>
-              <tr>
-                <td>Storage</td>
-                <td>AWS S3</td>
-                <td>공통 파일 저장과 URL 관리 추상화</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <h2 id="features">Key Features</h2>
-          <ul>
-            <li>Plan 상태 전이와 우선순위 재정렬 로직 구현</li>
-            <li>state-transition 기준으로 생성 요청과 완료 처리를 분리</li>
-            <li>polling 기반으로 queued, processing, ready 상태를 추적</li>
-            <li>완료 시 fcm 알림과 S3 저장 흐름을 연결</li>
-          </ul>
-
-          <pre><code>PlanStatus
-- queued
-- processing
-- ready
-- error
-- cancelled</code></pre>
-
-          <h2 id="troubleshooting">Troubleshooting</h2>
-          <h3>Problem</h3>
-          <p>외부 생성 서버가 즉시 완료되지 않으면 사용자에게 실패처럼 보이는 문제가 있었습니다.</p>
-          <h3>Solution</h3>
-          <p>
-            요청과 완료 처리를 분리하고, polling scheduler가 진행 상태를 주기적으로 갱신하도록 바꿨습니다.
-            또한 생성 메타데이터를 엔티티에 저장해 재조회 기준을 명확히 했습니다.
-          </p>
-          <h3>Result</h3>
-          <p>생성 중 상태를 안정적으로 노출할 수 있게 되었고, 다중 목표 생성 상황에서도 UX가 일관되게 유지됐습니다.</p>
-
-          <h2 id="retrospective">Retrospective</h2>
-          <ul class="check-list">
-            <li>상태 전이 설계는 비즈니스 규칙보다 UX 안정성과 함께 봐야 한다.</li>
-            <li>비동기 작업은 완료보다 추적 방식이 먼저 설계되어야 한다.</li>
-            <li>공통 저장 흐름은 초기에 추상화할수록 후속 작업이 단순해진다.</li>
-          </ul>
-
-          <h2 id="links">Links</h2>
-          <p>이 페이지는 포트폴리오용 요약본이며, 저장소 공개 범위는 조정될 수 있습니다.</p>
-
-          <hr>
-
-          <div class="doc-footer-links">
-            <a class="doc-action" href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M6 3.5H3.5v9h9V10"></path>
-                <path d="M8.5 3.5h4v4"></path>
-                <path d="M12.5 3.5 7 9"></path>
-              </svg>
-              <span>Open GitHub</span>
-            </a>
-            <a class="doc-action" href="#readme">
-              <svg viewBox="0 0 16 16" aria-hidden="true">
-                <path d="M8 12.5v-9"></path>
-                <path d="M4.5 7 8 3.5 11.5 7"></path>
-              </svg>
-              <span>Back to top</span>
-            </a>
-          </div>
-        </article>
-      </div>
-
-      <aside class="section-nav">
-        <div class="section-nav-card">
-          <p class="section-nav-title">Sections</p>
-          <ul class="section-nav-list">
-            <li><a href="#overview">Overview</a></li>
-            <li><a href="#tech-stack">Tech Stack</a></li>
-            <li><a href="#features">Key Features</a></li>
-            <li><a href="#troubleshooting">Troubleshooting</a></li>
-            <li><a href="#retrospective">Retrospective</a></li>
-            <li><a href="#links">Links</a></li>
-          </ul>
-        </div>
-      </aside>
-    </main>
+  <body data-detail-source="projects/moa/page.html">
+    <div id="detail-page-root" hidden></div>
+    <p id="detail-page-fallback">Loading detail page...</p>
+    <noscript>This page requires JavaScript.</noscript>
   </body>
 </html>
