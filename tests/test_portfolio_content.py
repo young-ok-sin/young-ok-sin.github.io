@@ -11,9 +11,24 @@ DETAIL_PAGES = {
 }
 SHARED_DETAIL_CSS = "projects/shared/detail-page.css"
 SHARED_DETAIL_LOADER = "projects/shared/detail-page-loader.js"
+HOME_CSS = "styles/home.css"
+PROFILE_IMAGE = "assets/images/profile.jpg"
+SAMPLE_PROJECT_PAGE = "examples/sample-project.html"
 
 
 class PortfolioContentTest(unittest.TestCase):
+    def test_home_page_uses_role_based_asset_folders(self):
+        index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn(f'href="{HOME_CSS}"', index_html)
+        self.assertIn(f'src="{PROFILE_IMAGE}"', index_html)
+        self.assertTrue((ROOT / HOME_CSS).exists())
+        self.assertTrue((ROOT / PROFILE_IMAGE).exists())
+
+    def test_root_keeps_only_public_entry_html_files(self):
+        for path in ["style.css", "profile.jpg", "moa.css", "sample-project.html"]:
+            with self.subTest(path=path):
+                self.assertFalse((ROOT / path).exists())
+
     def test_root_detail_pages_keep_public_urls(self):
         for entry_page, project_page in DETAIL_PAGES.items():
             with self.subTest(page=entry_page):
@@ -115,7 +130,7 @@ class PortfolioContentTest(unittest.TestCase):
     def test_kepco_detail_page_keeps_pdf_and_repo_links(self):
         detail_html = (ROOT / "projects/kepco-enc/page.html").read_text(encoding="utf-8")
         self.assertIn(
-            'href="assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer"',
+            'href="../../assets/docs/kepco-labeling-analysis.pdf" target="_blank" rel="noreferrer"',
             detail_html,
         )
         self.assertIn(
@@ -124,7 +139,7 @@ class PortfolioContentTest(unittest.TestCase):
         )
 
     def test_sample_project_page_contains_required_readme_sections(self):
-        sample_page = ROOT / "sample-project.html"
+        sample_page = ROOT / SAMPLE_PROJECT_PAGE
         self.assertTrue(sample_page.exists())
         if not sample_page.exists():
             return
@@ -145,13 +160,14 @@ class PortfolioContentTest(unittest.TestCase):
             self.assertIn(phrase, detail_html)
 
     def test_sample_project_page_uses_detail_shell(self):
-        sample_page = ROOT / "sample-project.html"
+        sample_page = ROOT / SAMPLE_PROJECT_PAGE
         self.assertTrue(sample_page.exists())
         if not sample_page.exists():
             return
 
         detail_html = sample_page.read_text(encoding="utf-8")
         self.assertIn('<meta name="viewport" content="width=device-width, initial-scale=1.0">', detail_html)
+        self.assertIn('href="../projects/shared/detail-page.css"', detail_html)
         self.assertIn('class="page-shell"', detail_html)
         self.assertIn("<pre><code>", detail_html)
         self.assertIn("<table>", detail_html)
