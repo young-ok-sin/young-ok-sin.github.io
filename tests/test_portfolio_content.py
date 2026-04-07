@@ -61,8 +61,7 @@ class PortfolioContentTest(unittest.TestCase):
                 self.assertIn('class="page-shell"', detail_html)
                 self.assertIn('class="markdown-document"', detail_html)
                 for phrase in [
-                    "README",
-                    "Table of Contents",
+                    "Project",
                     "Overview",
                     "Tech Stack",
                     "Key Features",
@@ -71,6 +70,7 @@ class PortfolioContentTest(unittest.TestCase):
                     "Links",
                 ]:
                     self.assertIn(phrase, detail_html)
+                self.assertNotIn('class="toc-box"', detail_html)
                 self.assertIn("<table>", detail_html)
                 self.assertIn("<blockquote>", detail_html)
                 self.assertIn("<pre><code>", detail_html)
@@ -196,3 +196,22 @@ class PortfolioContentTest(unittest.TestCase):
         self.assertIn("<pre><code>", detail_html)
         self.assertIn("<table>", detail_html)
         self.assertIn("<blockquote>", detail_html)
+
+    def test_credentials_section_merges_microsoft_fundamentals_and_adds_engineer_cert(self):
+        index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("<h4>Certificates</h4>", index_html)
+        self.assertIn("정보처리기사", index_html)
+        self.assertIn("Microsoft Fundamentals Certifications (AZ-900, AI-900)", index_html)
+        self.assertNotIn("AZ-900: Microsoft Azure Fundamentals", index_html)
+        self.assertNotIn("AI-900: Microsoft Azure AI Fundamentals", index_html)
+
+        certificates_block = index_html.split("<h4>Certificates</h4>", 1)[1].split("</article>", 1)[0]
+        awards_block = index_html.split("<h4>Awards</h4>", 1)[1].split("</article>", 1)[0]
+        self.assertNotIn("<span>4</span>", certificates_block)
+        self.assertNotIn("<span>2</span>", awards_block)
+
+    def test_home_css_keeps_hero_line_breaks_at_word_level(self):
+        css = (ROOT / HOME_CSS).read_text(encoding="utf-8")
+        self.assertIn("word-break: keep-all;", css)
+        self.assertIn("overflow-wrap: normal;", css)
+        self.assertIn("text-wrap: balance;", css)
