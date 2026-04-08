@@ -266,7 +266,6 @@ a {
 .hero-panel h2 {
   font-size: clamp(1.75rem, 3.5vw, 2.8rem);
   line-height: 1.08;
-  max-width: 24ch;
   word-break: keep-all;
   overflow-wrap: normal;
   text-wrap: balance;
