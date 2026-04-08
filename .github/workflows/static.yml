@@ -40,6 +40,7 @@ jobs:
           cp moa.html .pages-dist/
           cp healthcare-ai.html .pages-dist/
           cp kepco-enc.html .pages-dist/
+          cp rawfishs.html .pages-dist/
           cp sebook.html .pages-dist/
           cp -R styles .pages-dist/
           cp -R assets .pages-dist/
