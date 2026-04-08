@@ -9,7 +9,7 @@
       return;
     }
 
-    fetch(source)
+    fetch(source, { cache: "no-store" })
       .then(function (response) {
         if (!response.ok) {
           throw new Error("Failed to load detail page: " + response.status);

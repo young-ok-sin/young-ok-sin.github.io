@@ -7,6 +7,7 @@ DETAIL_PAGES = {
     "moa.html": "projects/moa/page.html",
     "healthcare-ai.html": "projects/healthcare-ai/page.html",
     "sebook.html": "projects/sebook/page.html",
+    "rawfishs.html": "projects/rawfishs/page.html",
     "kepco-enc.html": "projects/kepco-enc/page.html",
 }
 SHARED_DETAIL_CSS = "projects/shared/detail-page.css"
@@ -46,6 +47,10 @@ class PortfolioContentTest(unittest.TestCase):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="kepco-enc.html"', index_html)
 
+    def test_rawfishs_card_links_to_detail_page(self):
+        index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="rawfishs.html"', index_html)
+
     def test_kepco_experience_card_uses_jump_icon(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         card_start = '<a class="panel-card project-card-link" href="kepco-enc.html" aria-label="한국전력기술 상세 페이지로 이동">'
@@ -61,16 +66,16 @@ class PortfolioContentTest(unittest.TestCase):
                 self.assertIn('class="page-shell"', detail_html)
                 self.assertIn('class="markdown-document"', detail_html)
                 for phrase in [
-                    "README",
-                    "Table of Contents",
+                    "Project",
                     "Overview",
                     "Tech Stack",
                     "Key Features",
-                    "Troubleshooting",
+                    "개발 내용",
                     "Retrospective",
                     "Links",
                 ]:
                     self.assertIn(phrase, detail_html)
+                self.assertNotIn('class="toc-box"', detail_html)
                 self.assertIn("<table>", detail_html)
                 self.assertIn("<blockquote>", detail_html)
                 self.assertIn("<pre><code>", detail_html)
@@ -84,7 +89,7 @@ class PortfolioContentTest(unittest.TestCase):
                     'href="#overview"',
                     'href="#tech-stack"',
                     'href="#features"',
-                    'href="#troubleshooting"',
+                    'href="#development"',
                     'href="#retrospective"',
                     'href="#links"',
                 ]:
@@ -102,6 +107,32 @@ class PortfolioContentTest(unittest.TestCase):
                 self.assertIn('class="doc-action"', detail_html)
                 self.assertIn("<svg", detail_html)
 
+    def test_all_detail_pages_use_home_style_header_navigation(self):
+        for project_page in DETAIL_PAGES.values():
+            with self.subTest(page=project_page):
+                detail_html = (ROOT / project_page).read_text(encoding="utf-8")
+                header_block = detail_html.split("<header", 1)[1].split("</header>", 1)[0]
+                self.assertIn('<a class="brand" href="../../index.html">shin yeong ok</a>', header_block)
+                self.assertIn('href="../../index.html#projects"', header_block)
+                self.assertIn('href="../../index.html#external-activity"', header_block)
+                self.assertIn('href="../../index.html#experience"', header_block)
+                self.assertIn('href="../../index.html#credentials"', header_block)
+                self.assertIn('href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer"', header_block)
+                self.assertNotIn(">Back</a>", header_block)
+                self.assertNotIn("shin yeong ok / ", header_block)
+
+    def test_all_detail_pages_use_development_details_lists(self):
+        for project_page in DETAIL_PAGES.values():
+            with self.subTest(page=project_page):
+                detail_html = (ROOT / project_page).read_text(encoding="utf-8")
+                self.assertIn('<h2 id="development">개발 내용</h2>', detail_html)
+                self.assertIn('class="development-list"', detail_html)
+                self.assertIn('class="development-item"', detail_html)
+                self.assertIn('class="development-summary"', detail_html)
+                self.assertIn('class="development-points"', detail_html)
+                self.assertNotIn('class="troubleshooting-entry"', detail_html)
+                self.assertNotIn('class="troubleshooting-tile"', detail_html)
+
     def test_css_contains_shared_detail_page_mobile_rules(self):
         css = (ROOT / SHARED_DETAIL_CSS).read_text(encoding="utf-8")
         self.assertIn(".detail-page", css)
@@ -109,11 +140,19 @@ class PortfolioContentTest(unittest.TestCase):
         self.assertIn(".detail-page .markdown-document", css)
         self.assertIn(".doc-action", css)
 
+    def test_detail_pages_keep_fixed_top_header_layout(self):
+        css = (ROOT / SHARED_DETAIL_CSS).read_text(encoding="utf-8")
+        self.assertIn(".detail-page .site-header", css)
+        self.assertIn("position: fixed;", css)
+        self.assertIn("scroll-padding-top:", css)
+        self.assertIn(".detail-page .page-shell", css)
+
     def test_detail_pages_preserve_project_identity(self):
         expected_labels = {
             "projects/moa/page.html": ["MoA", "state-transition", "polling"],
             "projects/healthcare-ai/page.html": ["Healthcare AI", "blockchain", "spring-boot"],
             "projects/sebook/page.html": ["SEBook", "recommendation", "community"],
+            "projects/rawfishs/page.html": ["Rawfishs", "websocket", "Redis", "action item"],
             "projects/kepco-enc/page.html": ["KEPCO", "Paper PDF Extractor", "ocr"],
         }
         for project_page, phrases in expected_labels.items():
@@ -128,7 +167,7 @@ class PortfolioContentTest(unittest.TestCase):
             "금융 데이터 기반 목표 관리 서비스에서 목표 생성 이후 AI 후처리까지 이어지는 흐름을 설계한 백엔드 프로젝트입니다.",
             "목표 생성 API를 구현하면서 단순 저장에 그치지 않고 우선순위 이동, 예산 재배치, 즉시 저축 반영까지 하나의 흐름으로 묶었습니다.",
             "영상 생성은 polling scheduler로 추적했고, PROCESSING, SUCCEEDED, FAILED 상태를 나눠 장시간 작업을 관리했습니다.",
-            "@Version 기반 낙관적 락과 조건부 update를 적용해 비동기 상태 변경 중 오래된 데이터가 최신 상태를 덮어쓰는 문제를 줄였습니다.",
+            "상태 정합성과 동시성 제어 보강",
             "외부 연동이 포함된 기능은 요청-응답 흐름과 후처리 흐름을 분리해야 안정적으로 운영할 수 있다는 점을 확인했습니다.",
         ]:
             self.assertIn(phrase, detail_html)
@@ -196,3 +235,22 @@ class PortfolioContentTest(unittest.TestCase):
         self.assertIn("<pre><code>", detail_html)
         self.assertIn("<table>", detail_html)
         self.assertIn("<blockquote>", detail_html)
+
+    def test_credentials_section_merges_microsoft_fundamentals_and_adds_engineer_cert(self):
+        index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn("<h4>Certificates</h4>", index_html)
+        self.assertIn("정보처리기사", index_html)
+        self.assertIn("Microsoft Fundamentals Certifications (AZ-900, AI-900)", index_html)
+        self.assertNotIn("AZ-900: Microsoft Azure Fundamentals", index_html)
+        self.assertNotIn("AI-900: Microsoft Azure AI Fundamentals", index_html)
+
+        certificates_block = index_html.split("<h4>Certificates</h4>", 1)[1].split("</article>", 1)[0]
+        awards_block = index_html.split("<h4>Awards</h4>", 1)[1].split("</article>", 1)[0]
+        self.assertNotIn("<span>4</span>", certificates_block)
+        self.assertNotIn("<span>2</span>", awards_block)
+
+    def test_home_css_keeps_hero_line_breaks_at_word_level(self):
+        css = (ROOT / HOME_CSS).read_text(encoding="utf-8")
+        self.assertIn("word-break: keep-all;", css)
+        self.assertIn("overflow-wrap: normal;", css)
+        self.assertIn("text-wrap: balance;", css)

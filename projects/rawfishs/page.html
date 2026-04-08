@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rawfishs | Project Detail</title>
+    <meta
+      name="description"
+      content="Rawfishs 프로젝트에서 실시간 회의 흐름, WebSocket 타이머, Redis 기반 상태 관리, AI 리포트 후처리를 정리한 상세 페이지"
+    >
+    <link rel="icon" href="data:,">
+    <link rel="stylesheet" href="../shared/detail-page.css">
+  </head>
+  <body class="detail-page">
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="../../index.html">shin yeong ok</a>
+        <nav class="site-nav" aria-label="주요 이동">
+          <a href="../../index.html#projects">Projects</a>
+          <a href="../../index.html#external-activity">External Activity</a>
+          <a href="../../index.html#experience">Experience</a>
+          <a href="../../index.html#credentials">Credentials</a>
+          <a href="https://github.com/young-ok-sin" target="_blank" rel="noreferrer">GitHub</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="page-shell" data-readme-layout="true">
+      <aside class="project-sidebar doc-sidebar">
+        <section class="side-card">
+          <p class="side-label">Project</p>
+          <h1>Rawfishs</h1>
+          <p class="side-path">shin yeong ok / Rawfishs</p>
+          <p class="side-summary">
+            실시간 회의 진행 상태를 Redis와 WebSocket으로 처리하고, 회의 종료 후 AI 리포트와 action item 조회까지 연결한 협업 서비스 백엔드 프로젝트입니다.
+          </p>
+          <div class="doc-meta-list">
+            <div>
+              <strong>Status</strong>
+              <span>team-project · backend-focus</span>
+            </div>
+            <div>
+              <strong>Role</strong>
+              <span>백엔드 개발, 회의 상태 관리, WebSocket 타이머, AI 리포트 API</span>
+            </div>
+            <div>
+              <strong>Focus</strong>
+              <span>websocket, redis, ai-report, s3, livekit</span>
+            </div>
+          </div>
+          <ul class="topic-list">
+            <li>websocket</li>
+            <li>redis</li>
+            <li>ai-report</li>
+            <li>s3</li>
+          </ul>
+        </section>
+      </aside>
+
+      <div class="content-column">
+        <article class="markdown-document" id="readme">
+          <p class="eyebrow">Project</p>
+          <h1>Rawfishs</h1>
+          <p class="doc-lead">
+            Rawfishs는 실시간 회의 진행 데이터를 관리하고, 회의 종료 후 AI 기반 회의 요약과 action item을 생성·조회할 수 있게 만든 협업 서비스 백엔드 프로젝트입니다.
+          </p>
+
+          <h2 id="overview">Overview</h2>
+          <p>
+            Rawfishs는 사용자가 회의를 생성·참여하고, 안건과 타이머를 실시간으로 관리할 수 있도록 만든 협업 서비스입니다.
+            백엔드에서는 회의 중 상태와 참가자 정보를 Redis에 유지하고, WebSocket 이벤트로 타이머와 진행 상태를 동기화했습니다.
+            회의가 종료되면 Redis에 저장된 안건과 STT 데이터를 정리해 DB와 S3에 반영하고, 이어서 AI 서버에 회의록 생성을 요청하도록 구성했습니다.
+          </p>
+          <blockquote>
+            핵심은 회의 중 실시간 상태 처리와 회의 종료 후 비동기 AI 후처리를 한 흐름으로 연결하면서도, 실패 시 종료 자체는 깨지지 않게 분리하는 것이었습니다.
+          </blockquote>
+          <p>
+            이후 히스토리 API에서는 회의 요약, 핵심 의사결정, 안건별 action item, STT 스크립트까지 조회할 수 있도록 구성해
+            실시간 협업과 사후 기록 관리가 하나의 서비스 경험으로 이어지게 했습니다.
+          </p>
+
+          <h2 id="tech-stack">Tech Stack</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Area</th>
+                <th>Stack</th>
+                <th>Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Backend API / Realtime</td>
+                <td>Spring Boot, WebSocket, LiveKit</td>
+                <td>회의 생성·참여 API, 회의 입장 토큰 발급, 실시간 타이머와 상태 이벤트를 안정적으로 연결하기 위해 사용</td>
+              </tr>
+              <tr>
+                <td>Storage / State</td>
+                <td>Spring Data JPA, MySQL, Redis, AWS S3</td>
+                <td>회의 히스토리와 리포트를 영속 저장하고, 진행 중 상태는 Redis에 유지하며, STT 스크립트는 파일 형태로 S3에 저장하기 위해 사용</td>
+              </tr>
+              <tr>
+                <td>External Integration</td>
+                <td>RestClient, AI server, Resilience4j</td>
+                <td>회의 종료 후 AI 서버에 리포트 생성을 요청하고 timeout, retry, circuit breaker로 외부 장애가 전체 흐름을 깨지 않게 제어하기 위해 사용</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2 id="features">Key Features</h2>
+          <ul>
+            <li>회의 생성·참여 시 Redis에 회의와 참가자 상태를 저장하고 입장 토큰을 발급했습니다.</li>
+            <li>WebSocket 기반 타이머 start, stop, sync 기능을 구현하고 호스트 권한 검증을 함께 처리했습니다.</li>
+            <li>회의 종료 시 Redis 안건 snapshot을 DB에 저장하고 STT 스크립트를 S3에 업로드하도록 구성했습니다.</li>
+            <li>AI 서버 연동으로 회의 요약, 핵심 결정, 안건별 summary와 action item을 생성하고 저장했습니다.</li>
+            <li>회의 히스토리 API에서 회의 시간, 참가자 수, action item, STT 스크립트까지 함께 조회할 수 있게 했습니다.</li>
+          </ul>
+
+          <pre><code>websocket meeting end
+-> redis agenda snapshot save
+-> ai minutes request
+-> agenda/action item mapping
+-> stt script upload to s3
+-> history/report response</code></pre>
+          <h2 id="development">개발 내용</h2>
+          <div class="development-list">
+            <section class="development-item">
+              <h3>Redis와 WebSocket 기반 실시간 회의 상태 관리</h3>
+              <p class="development-summary">회의 생성·참여, 참가자 상태, 타이머 이벤트를 실시간으로 다루기 위해 Redis와 WebSocket 중심으로 상태 흐름을 정리했습니다.</p>
+              <ul class="development-points">
+                <li>회의와 참가자 상태를 Redis에 저장하고, 입장 토큰 발급과 실시간 이벤트 흐름을 연결했습니다.</li>
+                <li>타이머 start, stop, sync 이벤트와 호스트 권한 검증을 함께 처리했습니다.</li>
+                <li>서버 메모리와 Redis를 함께 활용해 타이머 종료 직후에도 상태 보정 메시지를 보낼 수 있게 했습니다.</li>
+              </ul>
+            </section>
+
+            <section class="development-item">
+              <h3>회의 종료 후 AI 리포트 생성 파이프라인 구성</h3>
+              <p class="development-summary">회의 종료 시점의 Redis 데이터를 그대로 버리지 않고, DB와 S3 저장 이후 AI 리포트 생성으로 이어지는 후처리 흐름을 만들었습니다.</p>
+              <ul class="development-points">
+                <li>Redis 안건 snapshot 저장, AI 리포트 요청, 정리 작업 순서로 종료 비동기 흐름을 재구성했습니다.</li>
+                <li>AI 호출 실패가 회의 종료 자체를 막지 않도록 후처리 로직을 분리했습니다.</li>
+                <li>Resilience4j 기반으로 timeout, retry, circuit breaker를 적용해 외부 장애 대응을 보강했습니다.</li>
+              </ul>
+            </section>
+
+            <section class="development-item">
+              <h3>히스토리 조회와 안건 단위 리포트 매핑 구현</h3>
+              <p class="development-summary">회의 요약만 보여주는 데 그치지 않고, 안건별 summary와 action item, STT 스크립트까지 조회할 수 있도록 히스토리 API를 확장했습니다.</p>
+              <ul class="development-points">
+                <li>Agenda 엔티티에 `redisAgendaId`를 저장해 AI 응답의 agendaKey와 DB 안건을 정확히 매핑했습니다.</li>
+                <li>회의 시간, 참가자 수, action item, STT 스크립트를 함께 조회할 수 있는 히스토리 응답 구조를 만들었습니다.</li>
+                <li>실시간 회의 상태와 종료 후 기록 조회가 하나의 서비스 흐름으로 이어지도록 API를 정리했습니다.</li>
+              </ul>
+            </section>
+          </div>
+
+          <h2 id="retrospective">Retrospective</h2>
+          <ul class="check-list">
+            <li>Redis 같은 실시간 저장소와 DB를 함께 쓰는 구조에서는 식별자 일관성을 먼저 설계해야 후처리 오류를 줄일 수 있었습니다.</li>
+            <li>외부 AI 호출은 성공 경로보다 실패와 재시도 정책을 먼저 설계해야 전체 서비스 안정성이 높아진다는 점을 경험했습니다.</li>
+            <li>회의 종료처럼 후처리가 많은 흐름은 비동기 처리와 정리 순서를 명확히 나누는 것이 유지보수와 장애 대응에 유리했습니다.</li>
+          </ul>
+
+          <h2 id="links">Links</h2>
+          <p>GitHub: 비공개</p>
+          <p>Demo: 없음</p>
+          <p>Notion/문서: 없음</p>
+
+          <hr>
+
+          <div class="doc-footer-links">
+            <a class="doc-action" href="../../index.html">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M6 3.5H3.5v9h9V10"></path>
+                <path d="M8.5 3.5h4v4"></path>
+                <path d="M12.5 3.5 7 9"></path>
+              </svg>
+              <span>Back Home</span>
+            </a>
+            <a class="doc-action" href="#readme">
+              <svg viewBox="0 0 16 16" aria-hidden="true">
+                <path d="M8 12.5v-9"></path>
+                <path d="M4.5 7 8 3.5 11.5 7"></path>
+              </svg>
+              <span>Back to top</span>
+            </a>
+          </div>
+        </article>
+      </div>
+
+      <aside class="section-nav">
+        <div class="section-nav-card">
+          <p class="section-nav-title">Sections</p>
+          <ul class="section-nav-list">
+            <li><a href="#overview">Overview</a></li>
+            <li><a href="#tech-stack">Tech Stack</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li><a href="#development">개발 내용</a></li>
+            <li><a href="#retrospective">Retrospective</a></li>
+            <li><a href="#links">Links</a></li>
+          </ul>
+        </div>
+      </aside>
+    </main>
+  </body>
+</html>
