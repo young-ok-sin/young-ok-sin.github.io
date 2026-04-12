@@ -519,8 +519,12 @@ code {
 }
 
 .doc-figure {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
   margin-top: 1rem;
   overflow-x: auto;
+  overflow-y: hidden;
   border: 1px solid #d0d7de;
   border-radius: 8px;
   background: #ffffff;
@@ -528,8 +532,9 @@ code {
 
 .doc-figure img {
   display: block;
-  width: max(56rem, 100%);
+  width: auto;
   max-width: none;
+  height: auto;
 }
 
 .doc-figure figcaption {
