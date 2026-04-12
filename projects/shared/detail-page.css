@@ -372,7 +372,8 @@ code {
 .markdown-document ol,
 .markdown-document blockquote,
 .markdown-document table,
-.markdown-document pre {
+.markdown-document pre,
+.markdown-document figure {
   margin: 0;
 }
 
@@ -515,6 +516,27 @@ code {
   padding: 0.2rem 0 0.2rem 1rem;
   border-left: 4px solid #d0d7de;
   color: #59636e;
+}
+
+.doc-figure {
+  margin-top: 1rem;
+  overflow-x: auto;
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.doc-figure img {
+  display: block;
+  width: max(56rem, 100%);
+  max-width: none;
+}
+
+.doc-figure figcaption {
+  padding: 0.75rem 0.9rem;
+  border-top: 1px solid #d8dee4;
+  color: #59636e;
+  font-size: 0.9rem;
 }
 
 .development-list {

@@ -177,6 +177,14 @@ class PortfolioContentTest(unittest.TestCase):
         )
         self.assertNotIn('class="badge-row"', detail_html)
 
+    def test_moa_page_includes_ai_pipeline_diagram_asset(self):
+        detail_html = (ROOT / "projects/moa/page.html").read_text(encoding="utf-8")
+        asset_path = ROOT / "projects/moa/assets/ai-pipeline-sequence.svg"
+
+        self.assertTrue(asset_path.exists())
+        self.assertIn('src="/projects/moa/assets/ai-pipeline-sequence.svg"', detail_html)
+        self.assertIn('class="doc-figure"', detail_html)
+
     def test_healthcare_and_sebook_repo_links_remain(self):
         healthcare_html = (ROOT / "projects/healthcare-ai/page.html").read_text(encoding="utf-8")
         sebook_html = (ROOT / "projects/sebook/page.html").read_text(encoding="utf-8")
