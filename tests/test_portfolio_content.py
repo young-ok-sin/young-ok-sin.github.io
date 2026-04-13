@@ -35,7 +35,7 @@ class PortfolioContentTest(unittest.TestCase):
             with self.subTest(page=entry_page):
                 detail_html = (ROOT / entry_page).read_text(encoding="utf-8")
                 self.assertIn(f'href="{SHARED_DETAIL_CSS}"', detail_html)
-                self.assertIn(f'src="{SHARED_DETAIL_LOADER}"', detail_html)
+                self.assertIn(f'src="{SHARED_DETAIL_LOADER}?v=', detail_html)
                 self.assertIn(f'data-detail-source="{project_page}"', detail_html)
 
     def test_project_folder_pages_exist(self):
@@ -139,6 +139,10 @@ class PortfolioContentTest(unittest.TestCase):
         self.assertIn(".detail-page .page-shell[data-readme-layout=\"true\"]", css)
         self.assertIn(".detail-page .markdown-document", css)
         self.assertIn(".doc-action", css)
+
+    def test_detail_page_loader_bypasses_stale_browser_cache(self):
+        loader_js = (ROOT / SHARED_DETAIL_LOADER).read_text(encoding="utf-8")
+        self.assertIn("cache: \"no-store\"", loader_js)
 
     def test_detail_pages_keep_fixed_top_header_layout(self):
         css = (ROOT / SHARED_DETAIL_CSS).read_text(encoding="utf-8")
@@ -262,3 +266,8 @@ class PortfolioContentTest(unittest.TestCase):
         self.assertIn("word-break: keep-all;", css)
         self.assertIn("overflow-wrap: normal;", css)
         self.assertIn("text-wrap: balance;", css)
+
+    def test_home_css_does_not_cap_hero_heading_width(self):
+        css = (ROOT / HOME_CSS).read_text(encoding="utf-8")
+        hero_heading_block = css.split(".hero-panel h2 {", 1)[1].split("}", 1)[0]
+        self.assertNotIn("max-width:", hero_heading_block)
