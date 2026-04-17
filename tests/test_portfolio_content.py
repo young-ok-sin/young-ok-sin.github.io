@@ -78,6 +78,37 @@ class PortfolioContentTest(unittest.TestCase):
             tech_stack_table.index('<col style="width: 46%;">'),
         )
 
+    def test_digital_sprout_sidebar_meta_values_are_korean(self):
+        detail_html = (ROOT / "projects/digital-sprout/page.html").read_text(encoding="utf-8")
+        meta_block = detail_html.split('<div class="doc-meta-list">', 1)[1].split("</div>\n          </div>", 1)[0]
+
+        self.assertIn("<strong>Status</strong>", meta_block)
+        self.assertIn("<strong>Role</strong>", meta_block)
+        self.assertIn("<strong>Focus</strong>", meta_block)
+        self.assertIn("<span>대외활동 · 멘토링</span>", meta_block)
+        self.assertIn("<span>팀장, 운영 총괄, 인공지능 실습 멘토</span>", meta_block)
+        self.assertIn("<span>학생 참여 유도, 수업 운영, 현장 문제 해결</span>", meta_block)
+        for phrase in [
+            "external-activity",
+            "team-lead",
+            "operation manager",
+            "AI practice mentor",
+            "student engagement",
+            "lesson operation",
+            "on-site problem solving",
+        ]:
+            self.assertNotIn(phrase, meta_block)
+
+    def test_digital_sprout_page_labels_activity_as_experience(self):
+        detail_html = (ROOT / "projects/digital-sprout/page.html").read_text(encoding="utf-8")
+
+        self.assertIn('<p class="side-label">Experience</p>', detail_html)
+        self.assertIn('<p class="eyebrow">Experience</p>', detail_html)
+        self.assertNotIn('<p class="side-label">경험</p>', detail_html)
+        self.assertNotIn('<p class="eyebrow">경험</p>', detail_html)
+        self.assertNotIn('<p class="side-label">Project</p>', detail_html)
+        self.assertNotIn('<p class="eyebrow">Project</p>', detail_html)
+
     def test_kepco_experience_card_uses_jump_icon(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         card_start = '<a class="panel-card project-card-link" href="kepco-enc.html" aria-label="한국전력기술 상세 페이지로 이동">'
@@ -92,8 +123,9 @@ class PortfolioContentTest(unittest.TestCase):
                 detail_html = (ROOT / project_page).read_text(encoding="utf-8")
                 self.assertIn('class="page-shell"', detail_html)
                 self.assertIn('class="markdown-document"', detail_html)
+                expected_heading = "Experience" if project_page == "projects/digital-sprout/page.html" else "Project"
                 for phrase in [
-                    "Project",
+                    expected_heading,
                     "Overview",
                     "Tech Stack",
                     "Key Features",
