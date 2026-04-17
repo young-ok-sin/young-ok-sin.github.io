@@ -10,6 +10,7 @@ DETAIL_PAGES = [
     "sebook.html",
     "rawfishs.html",
     "kepco-enc.html",
+    "digital-sprout.html",
 ]
 
 

@@ -42,6 +42,7 @@ jobs:
           cp kepco-enc.html .pages-dist/
           cp rawfishs.html .pages-dist/
           cp sebook.html .pages-dist/
+          cp digital-sprout.html .pages-dist/
           cp -R styles .pages-dist/
           cp -R assets .pages-dist/
           cp -R projects .pages-dist/
