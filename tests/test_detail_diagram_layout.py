@@ -12,6 +12,7 @@ DETAIL_PROJECT_PAGES = [
     ROOT / "projects/sebook/page.html",
     ROOT / "projects/rawfishs/page.html",
     ROOT / "projects/kepco-enc/page.html",
+    ROOT / "projects/digital-sprout/page.html",
 ]
 
 

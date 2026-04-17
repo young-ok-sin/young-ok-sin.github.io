@@ -9,6 +9,7 @@ DETAIL_PAGES = {
     "sebook.html": "projects/sebook/page.html",
     "rawfishs.html": "projects/rawfishs/page.html",
     "kepco-enc.html": "projects/kepco-enc/page.html",
+    "digital-sprout.html": "projects/digital-sprout/page.html",
 }
 SHARED_DETAIL_CSS = "projects/shared/detail-page.css"
 SHARED_DETAIL_LOADER = "projects/shared/detail-page-loader.js"
@@ -51,6 +52,32 @@ class PortfolioContentTest(unittest.TestCase):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         self.assertIn('href="rawfishs.html"', index_html)
 
+    def test_digital_sprout_activity_card_links_to_detail_page(self):
+        index_html = (ROOT / "index.html").read_text(encoding="utf-8")
+        self.assertIn('href="digital-sprout.html"', index_html)
+
+    def test_digital_sprout_page_does_not_show_operation_flow_image(self):
+        detail_html = (ROOT / "projects/digital-sprout/page.html").read_text(encoding="utf-8")
+
+        self.assertNotIn("camp-mentoring-flow.svg", detail_html)
+        self.assertFalse((ROOT / "projects/digital-sprout/assets/camp-mentoring-flow.svg").exists())
+
+    def test_digital_sprout_tech_stack_table_gives_more_space_to_method_and_reason(self):
+        detail_html = (ROOT / "projects/digital-sprout/page.html").read_text(encoding="utf-8")
+        tech_stack_table = detail_html.split('<h2 id="tech-stack">Tech Stack</h2>', 1)[1].split("</table>", 1)[0]
+
+        self.assertIn('<col style="width: 20%;">', tech_stack_table)
+        self.assertIn('<col style="width: 34%;">', tech_stack_table)
+        self.assertIn('<col style="width: 46%;">', tech_stack_table)
+        self.assertLess(
+            tech_stack_table.index('<col style="width: 20%;">'),
+            tech_stack_table.index('<col style="width: 34%;">'),
+        )
+        self.assertLess(
+            tech_stack_table.index('<col style="width: 34%;">'),
+            tech_stack_table.index('<col style="width: 46%;">'),
+        )
+
     def test_kepco_experience_card_uses_jump_icon(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         card_start = '<a class="panel-card project-card-link" href="kepco-enc.html" aria-label="한국전력기술 상세 페이지로 이동">'
@@ -70,11 +97,14 @@ class PortfolioContentTest(unittest.TestCase):
                     "Overview",
                     "Tech Stack",
                     "Key Features",
-                    "개발 내용",
                     "Retrospective",
                     "Links",
                 ]:
                     self.assertIn(phrase, detail_html)
+                if project_page == "projects/digital-sprout/page.html":
+                    self.assertIn("활동 내용", detail_html)
+                else:
+                    self.assertIn("개발 내용", detail_html)
                 self.assertNotIn('class="toc-box"', detail_html)
                 self.assertIn("<table>", detail_html)
                 self.assertIn("<blockquote>", detail_html)
@@ -125,7 +155,10 @@ class PortfolioContentTest(unittest.TestCase):
         for project_page in DETAIL_PAGES.values():
             with self.subTest(page=project_page):
                 detail_html = (ROOT / project_page).read_text(encoding="utf-8")
-                self.assertIn('<h2 id="development">개발 내용</h2>', detail_html)
+                if project_page == "projects/digital-sprout/page.html":
+                    self.assertIn('<h2 id="development">활동 내용</h2>', detail_html)
+                else:
+                    self.assertIn('<h2 id="development">개발 내용</h2>', detail_html)
                 self.assertIn('class="development-list"', detail_html)
                 self.assertIn('class="development-item"', detail_html)
                 self.assertIn('class="development-summary"', detail_html)
@@ -158,6 +191,12 @@ class PortfolioContentTest(unittest.TestCase):
             "projects/sebook/page.html": ["SEBook", "recommendation", "community"],
             "projects/rawfishs/page.html": ["Rawfishs", "websocket", "Redis", "action item"],
             "projects/kepco-enc/page.html": ["KEPCO", "Paper PDF Extractor", "ocr"],
+            "projects/digital-sprout/page.html": [
+                "디지털 새싹 캠프",
+                "team-lead",
+                "Neobot",
+                "wumt.da",
+            ],
         }
         for project_page, phrases in expected_labels.items():
             with self.subTest(page=project_page):
