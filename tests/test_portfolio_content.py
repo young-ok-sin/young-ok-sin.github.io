@@ -109,6 +109,14 @@ class PortfolioContentTest(unittest.TestCase):
         self.assertNotIn('<p class="side-label">Project</p>', detail_html)
         self.assertNotIn('<p class="eyebrow">Project</p>', detail_html)
 
+    def test_digital_sprout_features_section_is_labeled_as_major_activities(self):
+        detail_html = (ROOT / "projects/digital-sprout/page.html").read_text(encoding="utf-8")
+
+        self.assertIn('<h2 id="features">주요 활동</h2>', detail_html)
+        self.assertIn('<li><a href="#features">주요 활동</a></li>', detail_html)
+        self.assertNotIn('<h2 id="features">Key Features</h2>', detail_html)
+        self.assertNotIn('<li><a href="#features">Key Features</a></li>', detail_html)
+
     def test_kepco_experience_card_uses_jump_icon(self):
         index_html = (ROOT / "index.html").read_text(encoding="utf-8")
         card_start = '<a class="panel-card project-card-link" href="kepco-enc.html" aria-label="한국전력기술 상세 페이지로 이동">'
@@ -124,11 +132,12 @@ class PortfolioContentTest(unittest.TestCase):
                 self.assertIn('class="page-shell"', detail_html)
                 self.assertIn('class="markdown-document"', detail_html)
                 expected_heading = "Experience" if project_page == "projects/digital-sprout/page.html" else "Project"
+                expected_features = "주요 활동" if project_page == "projects/digital-sprout/page.html" else "Key Features"
                 for phrase in [
                     expected_heading,
                     "Overview",
                     "Tech Stack",
-                    "Key Features",
+                    expected_features,
                     "Retrospective",
                     "Links",
                 ]:
