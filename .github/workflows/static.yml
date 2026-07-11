@@ -43,6 +43,7 @@ jobs:
           cp rawfishs.html .pages-dist/
           cp sebook.html .pages-dist/
           cp digital-sprout.html .pages-dist/
+          cp portfolio.html .pages-dist/
           cp -R styles .pages-dist/
           cp -R assets .pages-dist/
           cp -R projects .pages-dist/
