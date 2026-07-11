@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="신영옥 포트폴리오 웹 뷰어">
+  <title>신영옥 포트폴리오</title>
+  <link rel="stylesheet" href="styles/portfolio-viewer.css">
+</head>
+<body>
+  <header class="viewer-header">
+    <a class="back-link" href="index.html">← 홈</a>
+    <div class="title-block"><h1>신영옥 포트폴리오</h1><p><span id="current-page">1</span> / 8 페이지</p></div>
+    <a class="pdf-link" href="assets/portfolio-pages/portfolio-shin-young-ok.pdf" target="_blank" rel="noreferrer">PDF 원본</a>
+  </header>
+  <main class="viewer-layout">
+    <nav class="page-nav" aria-label="포트폴리오 페이지 목록"><ol id="page-list"></ol></nav>
+    <section class="pages" aria-label="포트폴리오 본문">
+      <article class="portfolio-page" id="page-1" data-page="1"><img src="assets/portfolio-pages/page-02.webp" alt="포트폴리오 1페이지" width="1440" height="810"></article>
+      <article class="portfolio-page" id="page-2" data-page="2"><img src="assets/portfolio-pages/page-03.webp" alt="포트폴리오 2페이지" width="1440" height="810" loading="lazy"></article>
+      <article class="portfolio-page" id="page-3" data-page="3"><img src="assets/portfolio-pages/page-04.webp" alt="포트폴리오 3페이지" width="1440" height="810" loading="lazy"></article>
+      <article class="portfolio-page" id="page-4" data-page="4"><img src="assets/portfolio-pages/page-05.webp" alt="포트폴리오 4페이지" width="1440" height="810" loading="lazy"></article>
+      <article class="portfolio-page" id="page-5" data-page="5"><img src="assets/portfolio-pages/page-06.webp" alt="포트폴리오 5페이지" width="1440" height="810" loading="lazy"></article>
+      <article class="portfolio-page" id="page-6" data-page="6"><img src="assets/portfolio-pages/page-07.webp" alt="포트폴리오 6페이지" width="1440" height="810" loading="lazy"></article>
+      <article class="portfolio-page" id="page-7" data-page="7"><img src="assets/portfolio-pages/page-08.webp" alt="포트폴리오 7페이지" width="1440" height="810" loading="lazy"></article>
+      <article class="portfolio-page" id="page-8" data-page="8"><img src="assets/portfolio-pages/page-09.webp" alt="포트폴리오 8페이지" width="1440" height="810" loading="lazy"></article>
+    </section>
+  </main>
+  <script src="assets/portfolio-pages/viewer.js"></script>
+</body>
+</html>
